@@ -19,7 +19,7 @@ const Home = () => {
       </section>
 
       {/* Carousel */}
-      <section className="px-16">
+      <section className="p-2 w-full">
         <Carousel />
       </section>
 

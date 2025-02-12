@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const images = [
-  //   "https://images.unsplash.com/photo-1529693662653-9d480530a697?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   "https://media.istockphoto.com/id/2155398638/photo/japanese-woman-exercising-yoga-on-a-class-in-a-health-club.webp?s=1024x1024&w=is&k=20&c=59D2ifw6Lp1ER78SgJhK7ew_GSmhcpL_duIZ_iGNaaY=",
   "https://media.istockphoto.com/id/1830268749/photo/active-african-american-pregnant-woman-practicing-yoga-sitting-in-butterfly-or-konasana-pose.jpg?s=1024x1024&w=is&k=20&c=r9TDIYp9XEatEjSVTaPPSuWDy1ujBQ63snRj92FIKJU=",
   "https://media.istockphoto.com/id/1474998089/photo/woman-in-lotus-pose-yoga-studio.jpg?s=1024x1024&w=is&k=20&c=fEUd_CcvsXdaKN5MtwogpZ7-G3j8pqItl55rc-bphoA=",
@@ -14,25 +13,20 @@ const Carousel = () => {
   const intervalRef = useRef(null);
   const touchStartX = useRef(null);
 
-  // Auto-slide every 5 seconds
-  useEffect(() => {
-    startAutoSlide();
-    return () => stopAutoSlide(); // Cleanup on unmount
-  }, [currentIndex]);
-
   const startAutoSlide = () => {
-    stopAutoSlide(); // Clear existing interval before starting a new one
+    stopAutoSlide();
     intervalRef.current = setInterval(() => {
       handleNext();
     }, 5000);
   };
 
+  useEffect(() => {
+    startAutoSlide();
+    return () => stopAutoSlide();
+  }, [currentIndex]);
+
   const stopAutoSlide = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
-  };
-
-  const updateCarousel = (index) => {
-    setCurrentIndex(index);
   };
 
   const handlePrev = () => {
@@ -47,7 +41,6 @@ const Carousel = () => {
     );
   };
 
-  // Handle swipe gestures (for touch devices)
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -57,45 +50,58 @@ const Carousel = () => {
     const difference = touchStartX.current - touchEndX;
 
     if (difference > 50) {
-      handleNext(); // Swipe left
+      handleNext();
     } else if (difference < -50) {
-      handlePrev(); // Swipe right
+      handlePrev();
     }
   };
 
   return (
     <div
-      className="relative max-w-6xl mx-auto overflow-hidden rounded-lg shadow-lg"
+      className="relative w-full h-[50vh] overflow-hidden"
       onMouseEnter={stopAutoSlide}
       onMouseLeave={startAutoSlide}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Carousel Images */}
+      {/* Image Slider Container */}
       <div
-        className="flex transition-transform duration-700 ease-in-out"
+        className="flex w-full h-full transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {images.map((image, index) => (
-          <div key={index} className="flex-none w-full">
+          <div key={index} className="w-full flex-none h-full">
             <img
               src={image}
-              alt={`Yoga Pose ${index + 1}`}
-              className="w-full h-auto object-cover rounded-lg"
+              alt={`Slide ${index + 1}`}
+              className="w-full h-full object-cover"
             />
           </div>
         ))}
       </div>
 
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+
+      {/* Text Content */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
+        <h1 className="text-3xl sm:text-4xl font-extrabold mb-3">
+          Discover Your Inner Strength
+        </h1>
+        <p className="text-lg sm:text-xl max-w-2xl">
+          A journey to a healthier and more peaceful you starts here.
+        </p>
+      </div>
+
       {/* Navigation Buttons */}
       <button
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-30 text-white p-3 rounded-full hover:bg-opacity-80 transition duration-300 shadow-md"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-30 hover:bg-opacity-50 text-white p-3 sm:p-4 rounded-full shadow-lg transition duration-300"
         onClick={handlePrev}
       >
         &#10094;
       </button>
       <button
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-30 text-white p-3 rounded-full hover:bg-opacity-80 transition duration-300 shadow-md"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-30 hover:bg-opacity-50 text-white p-3 sm:p-4 rounded-full shadow-lg transition duration-300"
         onClick={handleNext}
       >
         &#10095;
@@ -106,12 +112,12 @@ const Carousel = () => {
         {images.map((_, index) => (
           <button
             key={index}
-            className={`h-3 w-3 rounded-full transition-all duration-300 ${
+            className={`h-3 w-3 sm:h-4 sm:w-4 rounded-full transition-all duration-300 ${
               currentIndex === index
                 ? "bg-orange-500 scale-125"
                 : "bg-gray-400 hover:bg-gray-500"
             }`}
-            onClick={() => updateCarousel(index)}
+            onClick={() => setCurrentIndex(index)}
           />
         ))}
       </div>
