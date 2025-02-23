@@ -114,7 +114,7 @@ const Carousel = () => {
             key={index}
             className={`h-3 w-3 sm:h-4 sm:w-4 rounded-full transition-all duration-300 ${
               currentIndex === index
-                ? "bg-orange-500 scale-125"
+                ? "bg-[#d67952] scale-125"
                 : "bg-gray-400 hover:bg-gray-500"
             }`}
             onClick={() => setCurrentIndex(index)}
