@@ -34,7 +34,7 @@ const FAQ = () => {
     <div className="bg-white py-16 px-6">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <h1 className="text-4xl font-bold text-center text-orange-500">
+        <h1 className="text-4xl font-bold text-center text-[#d67952]">
           Frequently Asked Questions
         </h1>
         <p className="text-lg text-gray-600 text-center mt-2">
@@ -50,13 +50,13 @@ const FAQ = () => {
             >
               {/* Question Section */}
               <button
-                className="w-full flex justify-between items-center text-lg font-semibold text-gray-800 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-200"
+                className="w-full flex justify-between items-center text-lg font-semibold text-gray-800 hover:text-[#d67952] focus:outline-none focus:ring-2 focus:ring-orange-200"
                 onClick={() => toggleAnswer(index)}
               >
                 <span>{faq.question}</span>
                 <span
                   className={`transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180 text-orange-500" : ""
+                    openIndex === index ? "rotate-180 text-[#d67952]" : ""
                   }`}
                 >
                   ⌄

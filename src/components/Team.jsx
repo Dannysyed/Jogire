@@ -32,7 +32,7 @@ const Team = () => {
     <div className="max-w-6xl mx-auto mt-12 px-6">
       {/* Header */}
       <div className="text-center mb-10">
-        <h2 className="text-4xl font-bold text-orange-500">Meet Our Team</h2>
+        <h2 className="text-4xl font-bold text-[#d67952]">Meet Our Team</h2>
         <p className="text-lg text-gray-700 mt-2">
           Dedicated professionals passionate about your well-being.
         </p>
@@ -51,7 +51,7 @@ const Team = () => {
               className="w-full h-64 object-cover"
             />
             <div className="p-6">
-              <h4 className="text-2xl font-bold text-orange-500">
+              <h4 className="text-2xl font-bold text-[#d67952]">
                 {member.name}
               </h4>
               <h6 className="text-gray-600 font-semibold mt-1">

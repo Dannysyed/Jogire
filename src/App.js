@@ -7,6 +7,7 @@ import TeamPage from "./pages/TeamPage";
 import FAQPage from "./pages/FAQPage";
 import "./index.css";
 import ContactUs from "./components/ContactUs";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/contact" element={<ContactUs />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

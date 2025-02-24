@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import logo from "../logo.jpg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,10 +10,15 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-orange-400">
+    <nav className="bg-[#d67952]">
       <div className="p-4 max-w-6xl mx-auto flex items-center justify-between">
-        <div className="text-white text-4xl font-normal">
+        {/* <div className="text-white text-4xl font-normal">
           <Link to="/">ᏠᎧᎶᎥᏒᏋ</Link>
+        </div> */}
+        <div className="text-white">
+          <Link to="/">
+            <img src={logo} alt="Jogi Re Logo" className="h-12 w-auto" />
+          </Link>
         </div>
         <div className="block lg:hidden">
           <button
@@ -34,7 +40,7 @@ const Navbar = () => {
               ></div>
               <div
                 className={`w-full h-1 bg-white transition-transform ${
-                  isOpen ? "-rotate-45 -translate-y-2" : ""
+                  isOpen ? "-rotate-45 -translate-y-3" : ""
                 }`}
               ></div>
             </div>
@@ -61,14 +67,14 @@ const Navbar = () => {
           </Link>
           <Link
             to="/contact"
-            className="bg-white text-orange-500 border border-orange-500 px-3 py-2 rounded-full hover:bg-gray-100 hover:text-gray-500 transition-colors duration-300 font-bold"
+            className="bg-white text-[#d67952] border border-orange-500 px-3 py-2 rounded-full hover:bg-gray-100 hover:text-gray-500 transition-colors duration-300 font-bold"
           >
             Contact Us
           </Link>
         </div>
       </div>
       {isOpen && (
-        <div className="lg:hidden bg-orange-400 p-4 flex flex-col space-y-4 items-center">
+        <div className="lg:hidden bg-[#ffaa85] p-4 flex flex-col space-y-4 items-center">
           <Link
             to="/"
             className="block text-white font-bold hover:text-gray-700"
@@ -89,7 +95,7 @@ const Navbar = () => {
           </Link>
           <Link
             to="/contact"
-            className="bg-white text-orange-500 border border-orange-500 px-3 py-2 rounded-full hover:bg-gray-100 hover:text-gray-500 transition-colors duration-300 font-bold"
+            className="bg-white text-[#d67952] border border-orange-500 px-3 py-2 rounded-full hover:bg-gray-100 hover:text-gray-500 transition-colors duration-300 font-bold"
           >
             Contact Us
           </Link>

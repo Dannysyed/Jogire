@@ -49,7 +49,7 @@ const ContactUs = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-6">
       <div className="bg-white p-8 rounded-2xl shadow-xl lg:w-1/2 w-full">
-        <h2 className="text-orange-500 text-4xl font-semibold mb-6 text-center">
+        <h2 className="text-[#d67952] text-4xl font-semibold mb-6 text-center">
           Get in Touch
         </h2>
 
@@ -143,7 +143,7 @@ const ContactUs = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full h-12 text-white text-lg font-semibold rounded-full bg-orange-500 shadow-md transition-all duration-300 hover:bg-orange-700 focus:ring-2 focus:ring-orange-400 focus:outline-none"
+            className="w-full h-12 text-white text-lg font-semibold rounded-full bg-[#d67952] shadow-md transition-all duration-300 hover:bg-orange-700 focus:ring-2 focus:ring-orange-400 focus:outline-none"
           >
             Send Message
           </button>
