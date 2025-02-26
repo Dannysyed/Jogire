@@ -19,7 +19,7 @@ const Home = () => {
       </section>
 
       {/* Carousel */}
-      <section className="p-2 w-full">
+      <section className="p-5 w-full">
         <Carousel />
       </section>
 
@@ -34,14 +34,14 @@ const Home = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-20">
+      <section className="py-5">
         <div className="max-w-6xl mx-auto px-6">
           <Team />
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white">
+      <section className="py-5 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <FAQ />
         </div>
