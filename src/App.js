@@ -8,6 +8,7 @@ import FAQPage from "./pages/FAQPage";
 import "./index.css";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
+import WhatsappContact from "./components/WhatsappContact";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
       </Routes>
       <Footer />
+      <WhatsappContact />
     </Router>
   );
 }

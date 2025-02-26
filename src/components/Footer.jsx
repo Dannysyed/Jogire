@@ -11,11 +11,11 @@ const Footer = () => {
   return (
     <footer className="bg-orange-800 text-white py-8">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Flex container for both elements */}
-        <div className="flex justify-between items-center">
+        {/* Flex container with default row direction, switching to column on mobile */}
+        <div className="flex flex-col-reverse md:flex-row justify-between items-center">
           {/* Copyright text */}
-          <p className="text-sm text-white">
-            &copy; 2025 Jogire. All rights reserved.
+          <p className="text-sm text-white mt-4 md:mt-0">
+            © 2025 Jogi Re!. All rights reserved.
           </p>
 
           {/* Social Media Icons */}
@@ -29,12 +29,12 @@ const Footer = () => {
               <FaFacebook size={30} />
             </a>
             <a
-              href="https://x.com" // Twitter's new domain after rebranding to X
+              href="https://x.com"
               className="text-white hover:text-gray-500 transition duration-300 ease-in-out transform hover:scale-110"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaXTwitter size={30} /> {/* X Icon */}
+              <FaXTwitter size={30} />
             </a>
             <a
               href="https://instagram.com"
