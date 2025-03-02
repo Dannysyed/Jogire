@@ -3,6 +3,7 @@ import Carousel from "../components/Carousel";
 import Services from "../components/Services";
 import Team from "../components/Team";
 import FAQ from "../components/FAQ";
+import TestimonialSection from "../components/TestimonialSection";
 
 const Home = () => {
   return (
@@ -40,8 +41,15 @@ const Home = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* Testimonial Section */}
       <section className="py-5 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <TestimonialSection />
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-5">
         <div className="max-w-6xl mx-auto px-6">
           <FAQ />
         </div>
