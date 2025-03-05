@@ -31,7 +31,7 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="bg-white py-16 px-6">
+    <div className="py-16 px-6">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <h1 className="text-4xl font-bold text-center text-[#d67952]">

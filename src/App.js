@@ -8,6 +8,8 @@ import FAQPage from "./pages/FAQPage";
 import "./index.css";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
+import WhatsappContact from "./components/WhatsappContact";
+import TestimonialPage from "./pages/TestimonialPage";
 
 function App() {
   return (
@@ -17,10 +19,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/team" element={<TeamPage />} />
+        <Route path="/testimonials" element={<TestimonialPage />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/contact" element={<ContactUs />} />
       </Routes>
       <Footer />
+      <WhatsappContact />
     </Router>
   );
 }

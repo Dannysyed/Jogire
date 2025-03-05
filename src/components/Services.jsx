@@ -36,11 +36,11 @@ const Services = () => {
   };
 
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div className="bg-white py-12 sm:py-18">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-lg font-semibold text-orange-600 uppercase tracking-wide">
+          <h2 className="text-lg font-semibold text-[#d67952] uppercase tracking-wide">
             Be Healthy
           </h2>
           <p className="mt-2 text-4xl font-bold text-gray-900 sm:text-5xl">
@@ -68,7 +68,7 @@ const Services = () => {
                 </h3>
                 <p className="mt-2 text-gray-600">{service.description}</p>
                 <button
-                  className="mt-4 text-orange-600 font-semibold"
+                  className="mt-4 text-[#d67952] font-semibold"
                   onClick={() => toggleModal(index)}
                 >
                   Learn More
