@@ -9,7 +9,14 @@ import "./index.css";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
 import WhatsappContact from "./components/WhatsappContact";
+// import YogaClassForm from "./components/YogaClassForm";
+// import DietPlanForm from "./components/DietPlanForm";
+// import CounselingForm from "./components/CounselingForm";
+// import AnthemSection from "./components/AnthemSection";
 import TestimonialPage from "./pages/TestimonialPage";
+import BlogPost from "./components/BlogPost";
+import BlogsPage from "./pages/BlogsPage";
+import AddBlogForm from "./components/AddBlogForm";
 
 function App() {
   return (
@@ -22,9 +29,16 @@ function App() {
         <Route path="/testimonials" element={<TestimonialPage />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/blogs" element={<BlogsPage />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="/admin/add-blog" element={<AddBlogForm />} />
       </Routes>
       <Footer />
       <WhatsappContact />
+      {/* <YogaClassForm />
+      <DietPlanForm />
+      <CounselingForm />
+      <AnthemSection /> */}
     </Router>
   );
 }
