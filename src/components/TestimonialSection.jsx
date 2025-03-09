@@ -360,7 +360,7 @@ const TestimonialSection = () => {
                   {!playing[testimonial.id] && (
                     <button
                       onClick={() => handlePlay(testimonial.id)}
-                      className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 hover:bg-opacity-50 transition-all duration-300"
+                      className="lg:flex hidden absolute inset-0 items-center justify-center bg-black bg-opacity-40 hover:bg-opacity-50 transition-all duration-300"
                       aria-label="Play video"
                     >
                       <FaPlay className="text-white text-4xl" />

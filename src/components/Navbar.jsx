@@ -66,6 +66,18 @@ const Navbar = () => {
             Services
           </Link>
           <Link
+            to="/testimonials"
+            className="text-white hover:text-gray-700 my-auto font-bold"
+          >
+            Testimonials
+          </Link>
+          <Link
+            to="/blogs"
+            className="text-white hover:text-gray-700 my-auto font-bold"
+          >
+            Blogs
+          </Link>
+          <Link
             to="/contact"
             className="bg-white text-[#d67952] border border-orange-500 px-3 py-2 rounded-full hover:bg-gray-100 hover:text-gray-500 transition-colors duration-300 font-bold"
           >
@@ -92,6 +104,18 @@ const Navbar = () => {
             className="block text-white font-bold hover:text-gray-700"
           >
             Services
+          </Link>
+          <Link
+            to="/testimonials"
+            className="text-white hover:text-gray-700 my-auto font-bold"
+          >
+            Testimonials
+          </Link>
+          <Link
+            to="/blogs"
+            className="text-white hover:text-gray-700 my-auto font-bold"
+          >
+            Blogs
           </Link>
           <Link
             to="/contact"
