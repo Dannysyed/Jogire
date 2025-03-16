@@ -9,22 +9,63 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: "What is Tailwind CSS?",
+      question: "I've never done yoga before—can I still join?",
       answer:
         "Tailwind CSS is a utility-first CSS framework for creating custom designs without having to leave your HTML.",
     },
     {
-      question: "How can I install Tailwind CSS?",
+      question: "Why JogiRe, and what makes it different from other platforms?",
       answer:
         "You can install Tailwind CSS using npm or by including the CDN link in your project.",
     },
     {
-      question: "Is Tailwind CSS better than Bootstrap?",
+      question: "What practices do you cover in your daily classes?",
       answer:
         "Tailwind CSS provides more flexibility for custom designs, whereas Bootstrap offers pre-built components for faster development.",
     },
     {
-      question: "Can I use Tailwind CSS with React?",
+      question: "Do you teach meditation?",
+      answer:
+        "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
+    },
+    {
+      question:
+        "What benefits can I expect as a member of the JogiRe community?",
+      answer:
+        "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
+    },
+    {
+      question: "What is the duration of daily yoga session?",
+      answer:
+        "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
+    },
+    {
+      question: "What is JogiRe?",
+      answer:
+        "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
+    },
+    {
+      question: "Where is JogiRe based?",
+      answer:
+        "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
+    },
+    {
+      question: "How many types of yoga forms/styles do you teach?",
+      answer:
+        "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
+    },
+    {
+      question: "Are your coaches certified?",
+      answer:
+        "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
+    },
+    {
+      question: "How much does it cost for one yoga session?",
+      answer:
+        "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
+    },
+    {
+      question: "How can I contact JogiRe?",
       answer:
         "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
     },
