@@ -1,0 +1,49 @@
+/* Ensure CKEditor content styles are applied */
+.ck-content {
+    font-family: inherit;
+    line-height: 1.6;
+    word-break: break-word;
+  }
+  
+  /* Style tables */
+  .ck-content table {
+    border-collapse: collapse;
+    width: auto;
+    margin: 1em 0;
+  }
+  
+  .ck-content table td,
+  .ck-content table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .ck-content table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .ck-content table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Style code blocks */
+  .ck-content pre {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1em;
+    overflow-x: auto;
+    font-family: monospace;
+  }
+  
+  .ck-content code {
+    background: #f4f4f4;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: monospace;
+  }
+  
+  /* Optional: Enhance code block with language class */
+  .ck-content pre code.language-plaintext {
+    color: #333;
+  }
