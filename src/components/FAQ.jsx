@@ -11,63 +11,63 @@ const FAQ = () => {
     {
       question: "I've never done yoga before—can I still join?",
       answer:
-        "Tailwind CSS is a utility-first CSS framework for creating custom designs without having to leave your HTML.",
+        "Absolutely! JogiRe welcomes everyone, whether you're a beginner, intermediate, or advanced practitioner. Our sessions are designed to cater to all levels, with modifications and progressions to suit your needs. Our expert instructors will guide you step by step, ensuring you feel comfortable and confident on your yoga journey.",
     },
     {
       question: "Why JogiRe, and what makes it different from other platforms?",
       answer:
-        "You can install Tailwind CSS using npm or by including the CDN link in your project.",
+        "At JogiRe, we follow a holistic approach based on the Panchkosha Philosophy, which focuses on five layers of human existence - 1.Annamaya Kosha – Physical health through diet and movement. 2.Pranamaya Kosha – Energy balance through breathwork. 3.Manomaya Kosha – Mental clarity and emotional well-being. 4.Vijnanamaya Kosha – Self-awareness and wisdom. 5.Anandamaya Kosha – Inner peace and bliss. Unlike other platforms that focus only on physical fitness, JogiRe integrates yoga, breathwork, meditation, and lifestyle guidance to bring true transformation from the inside out.",
     },
     {
       question: "What practices do you cover in your daily classes?",
       answer:
-        "Tailwind CSS provides more flexibility for custom designs, whereas Bootstrap offers pre-built components for faster development.",
+        "At JogiRe, we offer customized yoga practices targeting individual goals. Our daily classes include: 1.Asanas (Yoga Poses) – To improve strength, flexibility, and posture. 2.Pranayama (Breathwork) – To enhance energy levels and mental clarity. 3.Mindfulness – To reduce stress and improve focus. 4.Relaxation Techniques – To restore balance and inner peace. Each session provides a well-rounded yoga experience, ensuring steady progress for all levels.",
     },
     {
       question: "Do you teach meditation?",
       answer:
-        "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
+        "Meditation is not just a practice—it is a state of being. At JogiRe, we prepare your body and mind to naturally enter a meditative state through yoga, breathwork, and mindfulness. Instead of forcing the mind to be still, we help you cultivate the right conditions for deep awareness and inner peace to arise effortlessly.",
     },
     {
       question:
         "What benefits can I expect as a member of the JogiRe community?",
       answer:
-        "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
+        "As a JogiRe member, you'll experience: 1.Personalized Yoga Practices – Tailored to your health and wellness goals. 2.Stress Relief & Mental Clarity – Techniques to help you stay calm and focused. 3.Better Energy & Vitality – Breathwork and movement for overall well-being. 4.A Supportive Community – Connect with like-minded individuals. 5.Sustainable Wellness – Develop habits for long-term health and inner peace. 6.JogiRe is about living yoga, not just practicing it.",
     },
     {
       question: "What is the duration of daily yoga session?",
       answer:
-        "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
+        "Our daily yoga sessions typically last between 45 to 60 minutes, ensuring a well-balanced practice that includes warm-up, asanas, breathwork, relaxation, and mindfulness.",
     },
     {
       question: "What is JogiRe?",
       answer:
-        "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
+        "JogiRe's mission is to promote sustainable wellness through a holistic approach, helping individuals become the healthiest version of themselves. We focus on yoga, balanced nutrition (Aahar), and mindful living to create lasting well-being.",
     },
     {
       question: "Where is JogiRe based?",
       answer:
-        "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
+        "JogiRe is based in India, the birthplace of yoga. While we primarily offer online sessions, we also conduct offline workshops, retreats, and yoga sessions in beautiful locations.",
     },
     {
       question: "How many types of yoga forms/styles do you teach?",
       answer:
-        "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
+        "At JogiRe, we teach more than 21 forms of yoga, including: Hatha Yoga – Traditional practice for balance, strength, and flexibility. Vinyasa Yoga – Dynamic flow for mobility and endurance. Ashtanga Yoga – A structured, intense practice for strength and discipline. We integrate various styles to create the best experience for your body, mind, and goals.",
     },
     {
       question: "Are your coaches certified?",
       answer:
-        "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
+        "Yes! Our coaches are highly certified, with many holding master’s degrees and scholarly expertise in yoga and wellness. They bring years of experience and deep knowledge to guide you on your wellness journey.",
     },
     {
       question: "How much does it cost for one yoga session?",
       answer:
-        "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
+        "The cost varies based on the type of session: Group classes are budget-friendly and ideal for community practice. Private sessions offer personalized guidance for deeper progress. We provide flexible pricing plans to make yoga accessible to everyone. Contact us for details.",
     },
     {
       question: "How can I contact JogiRe?",
       answer:
-        "Yes, Tailwind CSS works seamlessly with React. You can install it via npm and use its utility classes in JSX.",
+        "You can reach out to us through: Email: [Your Email Here] Phone/WhatsApp: [Your Contact Number] Website: [Your Website URL] Social Media: Follow us on [Instagram/Facebook/LinkedIn] for updates and insights. We'd love to hear from you and help you start your JogiRe wellness journey!",
     },
   ];
 
