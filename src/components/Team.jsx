@@ -11,20 +11,20 @@ const Team = () => {
         "https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
-      name: "Priya Sharma",
+      name: "Dhaval Prajapati",
       role: "Wellness Coach",
       description:
-        "Priya is a certified wellness coach, helping people achieve a balanced lifestyle through mindful movement and meditation.",
+        "Dhaval is a certified wellness coach, helping people achieve a balanced lifestyle through mindful movement and meditation.",
       image:
-        "https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://plus.unsplash.com/premium_photo-1689977807477-a579eda91fa2?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
-      name: "Raj Verma",
+      name: "Rudra",
       role: "Ayurveda Specialist",
       description:
-        "Raj specializes in Ayurveda and natural healing practices, offering personalized wellness solutions.",
+        "Rudra specializes in Ayurveda and natural healing practices, offering personalized wellness solutions.",
       image:
-        "https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://plus.unsplash.com/premium_photo-1689977968861-9c91dbb16049?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   ];
 

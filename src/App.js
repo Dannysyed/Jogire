@@ -17,6 +17,7 @@ import TestimonialPage from "./pages/TestimonialPage";
 import BlogPost from "./components/BlogPost";
 import BlogsPage from "./pages/BlogsPage";
 import AddBlogForm from "./components/AddBlogForm";
+import GurusPage from "./pages/GurusPage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/team" element={<TeamPage />} />
+        <Route path="/gurus" element={<GurusPage />} />
         <Route path="/testimonials" element={<TestimonialPage />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/contact" element={<ContactUs />} />
