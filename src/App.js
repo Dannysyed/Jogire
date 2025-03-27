@@ -18,6 +18,7 @@ import BlogPost from "./components/BlogPost";
 import BlogsPage from "./pages/BlogsPage";
 import AddBlogForm from "./components/AddBlogForm";
 import GurusPage from "./pages/GurusPage";
+import MissionPage from "./pages/MissionPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/team" element={<TeamPage />} />
         <Route path="/gurus" element={<GurusPage />} />
+        <Route path="/mission" element={<MissionPage />} />
         <Route path="/testimonials" element={<TestimonialPage />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/contact" element={<ContactUs />} />

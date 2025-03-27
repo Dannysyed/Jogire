@@ -8,7 +8,7 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    if (!isOpen) setIsDropdownOpen(false); // Close dropdown when menu closes
+    if (!isOpen) setIsDropdownOpen(false);
   };
 
   const toggleDropdown = () => {
@@ -90,7 +90,7 @@ const Navbar = () => {
                   Our Guru's & Inspiration
                 </Link>
                 <Link
-                  to="#"
+                  to="/mission"
                   className="block px-4 py-2 text-gray-800 hover:bg-gray-100 disabled"
                   onClick={() => setIsDropdownOpen(false)}
                 >
@@ -179,7 +179,7 @@ const Navbar = () => {
                   Our Guru's & Inspiration
                 </Link>
                 <Link
-                  to="/#"
+                  to="/mission"
                   className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
                   onClick={() => {
                     setIsDropdownOpen(false);
