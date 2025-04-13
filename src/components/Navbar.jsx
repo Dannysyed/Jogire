@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../logo.jpg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +19,11 @@ const Navbar = () => {
       <div className="p-4 max-w-6xl mx-auto flex items-center justify-between">
         <div className="text-white">
           <Link to="/">
-            <img src={logo} alt="Jogi Re Logo" className="h-12 w-auto" />
+            <img
+              src="https://jogire.s3.ap-south-1.amazonaws.com/static/branding/logo.svg"
+              alt="Jogi Re Logo"
+              className="h-12 w-auto"
+            />
           </Link>
         </div>
         <div className="block lg:hidden">
@@ -88,6 +91,13 @@ const Navbar = () => {
                   onClick={() => setIsDropdownOpen(false)} // Close dropdown on selection
                 >
                   Our Guru's & Inspiration
+                </Link>
+                <Link
+                  to="/mentors"
+                  className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                  onClick={() => setIsDropdownOpen(false)} // Close dropdown on selection
+                >
+                  Our Mentors
                 </Link>
                 <Link
                   to="/mission"
@@ -177,6 +187,13 @@ const Navbar = () => {
                   }}
                 >
                   Our Guru's & Inspiration
+                </Link>
+                <Link
+                  to="/mentors"
+                  className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                  onClick={() => setIsDropdownOpen(false)} // Close dropdown on selection
+                >
+                  Our Mentors
                 </Link>
                 <Link
                   to="/mission"
