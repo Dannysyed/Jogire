@@ -3,12 +3,12 @@ import React from "react";
 const Team = () => {
   const teamMembers = [
     {
-      name: "Anshul",
+      name: "Koushal Puri",
       role: "Yoga Expert",
       description:
         "Anshul, an established holistic yoga and meditation teacher. Anshul's teachings seamlessly integrate yoga philosophy from the physical to the profound.",
       image:
-        "https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://jogire.s3.ap-south-1.amazonaws.com/static/aboutus/team/koushal.webp",
     },
     {
       name: "Dhaval Prajapati",
@@ -16,15 +16,15 @@ const Team = () => {
       description:
         "Dhaval is a certified wellness coach, helping people achieve a balanced lifestyle through mindful movement and meditation.",
       image:
-        "https://plus.unsplash.com/premium_photo-1689977807477-a579eda91fa2?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://jogire.s3.ap-south-1.amazonaws.com/static/aboutus/team/dhawal.webp",
     },
     {
-      name: "Rudra",
+      name: "Rudradeep",
       role: "Ayurveda Specialist",
       description:
         "Rudra specializes in Ayurveda and natural healing practices, offering personalized wellness solutions.",
       image:
-        "https://plus.unsplash.com/premium_photo-1689977968861-9c91dbb16049?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://jogire.s3.ap-south-1.amazonaws.com/static/aboutus/team/rudradeep.webp",
     },
   ];
 
