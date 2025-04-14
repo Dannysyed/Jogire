@@ -76,7 +76,7 @@ import {
 import "ckeditor5/ckeditor5.css";
 import "./Editor.css";
 
-const Editor = ({ onSave }) => {
+const Editor = ({ onChange, initialData }) => {
   const editorRef = useRef(null);
   const isMounted = useRef(false);
 
@@ -87,7 +87,6 @@ const Editor = ({ onSave }) => {
       if (editorRef.current?.editor) {
         editorRef.current.editor
           .destroy()
-          .then(() => console.log("Editor destroyed"))
           .catch((error) => console.error("Error destroying editor:", error));
         editorRef.current = null;
       }
@@ -343,14 +342,7 @@ const Editor = ({ onSave }) => {
       ],
     },
     htmlSupport: {
-      allow: [
-        {
-          name: /^.*$/,
-          styles: true,
-          attributes: true,
-          classes: true,
-        },
-      ],
+      allow: [{ name: /^.*$/, styles: true, attributes: true, classes: true }],
     },
     image: {
       toolbar: [
@@ -373,18 +365,12 @@ const Editor = ({ onSave }) => {
         toggleDownloadable: {
           mode: "manual",
           label: "Downloadable",
-          attributes: {
-            download: "file",
-          },
+          attributes: { download: "file" },
         },
       },
     },
     list: {
-      properties: {
-        styles: true,
-        startIndex: true,
-        reversed: true,
-      },
+      properties: { styles: true, startIndex: true, reversed: true },
     },
     mention: {
       feeds: [
@@ -396,47 +382,17 @@ const Editor = ({ onSave }) => {
         },
       ],
     },
-    menuBar: {
-      isVisible: true,
-    },
+    menuBar: { isVisible: true },
     placeholder: "Type or paste your content here!",
     style: {
       definitions: [
-        {
-          name: "Article category",
-          element: "h3",
-          classes: ["category"],
-        },
-        {
-          name: "Title",
-          element: "h2",
-          classes: ["document-title"],
-        },
-        {
-          name: "Subtitle",
-          element: "h3",
-          classes: ["document-subtitle"],
-        },
-        {
-          name: "Info box",
-          element: "p",
-          classes: ["info-box"],
-        },
-        {
-          name: "Side quote",
-          element: "blockquote",
-          classes: ["side-quote"],
-        },
-        {
-          name: "Marker",
-          element: "span",
-          classes: ["marker"],
-        },
-        {
-          name: "Spoiler",
-          element: "span",
-          classes: ["spoiler"],
-        },
+        { name: "Article category", element: "h3", classes: ["category"] },
+        { name: "Title", element: "h2", classes: ["document-title"] },
+        { name: "Subtitle", element: "h3", classes: ["document-subtitle"] },
+        { name: "Info box", element: "p", classes: ["info-box"] },
+        { name: "Side quote", element: "blockquote", classes: ["side-quote"] },
+        { name: "Marker", element: "span", classes: ["marker"] },
+        { name: "Spoiler", element: "span", classes: ["spoiler"] },
         {
           name: "Code (dark)",
           element: "pre",
@@ -458,18 +414,8 @@ const Editor = ({ onSave }) => {
         "tableCellProperties",
       ],
     },
-    mediaEmbed: {
-      previewsInData: true,
-    },
+    mediaEmbed: { previewsInData: true },
     licenseKey: "GPL",
-  };
-
-  const handleSave = () => {
-    if (isMounted.current && editorRef.current?.editor) {
-      const content = editorRef.current.editor.getData();
-      onSave(content);
-      editorRef.current.editor.setData("");
-    }
   };
 
   return (
@@ -477,11 +423,17 @@ const Editor = ({ onSave }) => {
       <CKEditor
         editor={ClassicEditor}
         config={editorConfiguration}
-        data="<p>Start typing your blog content here...</p>"
+        data={initialData || "<p>Start typing your blog content here...</p>"}
         onReady={(editor) => {
           if (isMounted.current) {
             editorRef.current = { editor };
             console.log("Editor is ready!", editor);
+          }
+        }}
+        onChange={(event, editor) => {
+          if (isMounted.current) {
+            const content = editor.getData();
+            onChange(content);
           }
         }}
         onError={(error, { willEditorRestart }) => {
@@ -491,12 +443,6 @@ const Editor = ({ onSave }) => {
           }
         }}
       />
-      <button
-        onClick={handleSave}
-        className="mt-4 w-full py-2 bg-[#d67952] text-white rounded-lg hover:bg-[#b55e3f] transition-colors duration-200"
-      >
-        Save
-      </button>
     </div>
   );
 };
