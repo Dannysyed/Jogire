@@ -532,7 +532,7 @@ import {
 import "ckeditor5/ckeditor5.css";
 import "./Editor.css";
 
-const Editor = ({ onChange, initialData }) => {
+const Editor = ({ onChange, initialData, onImageUpload }) => {
   const editorRef = useRef(null);
   const isMounted = useRef(false);
 
@@ -558,6 +558,15 @@ const Editor = ({ onChange, initialData }) => {
     upload() {
       return this.loader.file.then((file) => {
         return new Promise((resolve, reject) => {
+          const allowed_types = ["image/jpeg", "image/png"];
+          const max_size_mb = 2;
+          if (!allowed_types.includes(file.type)) {
+            return reject("Only JPEG or PNG images are allowed");
+          }
+          if (file.size > max_size_mb * 1024 * 1024) {
+            return reject(`File size must be less than ${max_size_mb}MB`);
+          }
+
           const formData = new FormData();
           formData.append("image", file);
 
@@ -572,7 +581,12 @@ const Editor = ({ onChange, initialData }) => {
               if (!response.ok) throw new Error("Image upload failed");
               return response.json();
             })
-            .then((data) => resolve({ default: data.url }))
+            .then((data) => {
+              if (onImageUpload) {
+                onImageUpload(data.url);
+              }
+              resolve({ default: data.url });
+            })
             .catch((err) => reject(err.message));
         });
       });
