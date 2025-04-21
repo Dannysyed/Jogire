@@ -13,6 +13,7 @@ const AddBlogForm = () => {
   });
   const [thumbnailFile, setThumbnailFile] = useState(null);
   const [thumbnailPreview, setThumbnailPreview] = useState(null);
+  const [uploadedImages, setUploadedImages] = useState([]);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -66,6 +67,10 @@ const AddBlogForm = () => {
     }
   };
 
+  const handleImageUpload = (url) => {
+    setUploadedImages((prev) => [...prev, url]);
+  };
+
   const validateForm = () => {
     const newErrors = {};
     if (!formData.title.trim()) newErrors.title = "Title is required";
@@ -90,21 +95,37 @@ const AddBlogForm = () => {
       return;
     }
 
-    const data = new FormData();
-    data.append("slug", formData.slug);
-    data.append("title", formData.title);
-    data.append("excerpt", formData.excerpt);
-    data.append("content", formData.content);
-    data.append(
-      "published_on",
-      formData.published_on || new Date().toISOString().split("T")[0]
-    );
-    data.append("author_name", formData.author_name);
-    if (thumbnailFile) {
-      data.append("thumbnail", thumbnailFile);
-    }
-
     try {
+      // Move images from temp/ to blogs/uploads/images/
+      const moveResponse = await fetch(
+        "https://jogire-backend.onrender.com/api/v1/blogs/blog-move-images",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ content: formData.content, uploadedImages }),
+        }
+      );
+      if (!moveResponse.ok) {
+        throw new Error("Failed to move images");
+      }
+      const { updatedContent } = await moveResponse.json();
+
+      // Prepare form data for blog creation
+      const data = new FormData();
+      data.append("slug", formData.slug);
+      data.append("title", formData.title);
+      data.append("excerpt", formData.excerpt);
+      data.append("content", updatedContent);
+      data.append(
+        "published_on",
+        formData.published_on || new Date().toISOString().split("T")[0]
+      );
+      data.append("author_name", formData.author_name);
+      if (thumbnailFile) {
+        data.append("thumbnail", thumbnailFile);
+      }
+
+      // Save blog
       const response = await fetch(
         "https://jogire-backend.onrender.com/api/v1/blogs",
         {
@@ -116,6 +137,7 @@ const AddBlogForm = () => {
         const errorData = await response.json();
         throw new Error(errorData.detail || "Failed to create blog");
       }
+
       setSuccess(true);
       setFormData({
         slug: "",
@@ -127,6 +149,7 @@ const AddBlogForm = () => {
       });
       setThumbnailFile(null);
       setThumbnailPreview(null);
+      setUploadedImages([]);
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
       }
@@ -300,6 +323,7 @@ const AddBlogForm = () => {
             <Editor
               onChange={handleEditorChange}
               initialData={formData.content}
+              onImageUpload={handleImageUpload}
             />
             {errors.content && (
               <p className="text-red-500 text-sm mt-1">{errors.content}</p>
