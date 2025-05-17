@@ -54,9 +54,10 @@ const Mission = () => {
             distractions, indulgences, and extremes, most people engage in bhoga
             (sensory pleasure) in a compulsive, unconscious manner—leading not
             to joy, but to roga (disease) and dissatisfaction. Gut health
-            issues, mental health struggles, and spiritual confusion are on the
-            rise, not because people are indulging, but because they are doing
-            so without awareness. We are here to change that.
+            issues, mental health struggles, metabolic disorders and spiritual
+            confusion are on the rise, not because people are indulging, but
+            because they are doing so without awareness. We are here to change
+            that.
           </p>
         </div>
       </section>
@@ -72,13 +73,14 @@ const Mission = () => {
             and digital overstimulation. We consume—not just food, but
             experiences, relationships, and information—in ways that disconnect
             us from ourselves. This disconnection manifests as chronic gut
-            issues, anxiety, burnout, and spiritual emptiness. At the same time,
-            many who turn toward spirituality are not driven by a deep, inner
-            thirst for truth, but by social media trends, past traumas, or life
-            setbacks. They often attempt to renounce bhoga forcefully, without
-            the inner preparation to support such a shift. This leads to a cycle
-            of guilt, suppression, and failure, where neither the material nor
-            the spiritual path brings lasting fulfillment.
+            issues, anxiety, burnout, metabolic issues, and spiritual emptiness.
+            At the same time, many who turn toward spirituality are not driven
+            by a deep, inner thirst for truth, but by social media trends, past
+            traumas, or life setbacks. They often attempt to renounce bhoga
+            forcefully, without the inner preparation to support such a shift.
+            This leads to a cycle of guilt, suppression, and failure, where
+            neither the material nor the spiritual path brings lasting
+            fulfillment.
           </p>
         </div>
       </section>
@@ -113,15 +115,15 @@ const Mission = () => {
             Our mission was born from real, lived experience. Our founder
             battled with debilitating gut health problems, mental distress, and
             a sense of spiritual disconnection. He explored every major system
-            of healing—Ayurveda, Allopathy, Homeopathy, Siddha, and more—but
+            of healing — Ayurveda, Allopathy, Homeopathy, Siddha, and more—but
             found no lasting solution. It was only through a holistic lifestyle
-            transformation, combining Yoga, Mindfulness, and Conscious
-            Nutrition, that a miraculous shift occurred. This personal healing
-            journey not only restored his health but awakened a deeper
-            calling—to help others break free from similar cycles of suffering.
-            Since then, Jogire has guided many individuals through their own
-            healing journeys—empowering them to reclaim their health, vitality,
-            and purpose.
+            transformation, combining Yoga, Mindfulness, and Conscious Eating,
+            that a miraculous shift occurred. This personal healing journey not
+            only restored his health but awakened a deeper calling—to help
+            others break free from similar cycles of suffering. Since then,
+            Jogire has guided many individuals through their own healing
+            journeys—empowering them to reclaim their health, vitality, and
+            purpose.
           </p>
         </div>
       </section>
@@ -133,8 +135,8 @@ const Mission = () => {
             Our Mission in Action
           </h2>
           <p className="text-justify text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            At Jogire, we are on a mission to: Help individuals overcome gut
-            health and mental well-being challenges caused by unconscious
+            At Jogire, we are on a mission to: Help individuals overcome gut,
+            mental, and metabolic health challenges caused by unconscious
             consumption and lifestyle habits. Support spiritual seekers who are
             struggling with forced renunciation by showing them a balanced,
             gradual, and sustainable path forward. Transform bhoga from a
