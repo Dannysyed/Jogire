@@ -29,7 +29,7 @@ const Team = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto mt-12 px-6">
+    <div className="max-w-6xl mx-auto mt-12 mb-12 px-6">
       {/* Header */}
       <div className="text-center mb-10">
         <h2 className="text-4xl font-bold text-[#d67952]">Meet Our Team</h2>

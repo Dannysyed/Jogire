@@ -96,25 +96,59 @@
 // export default Mentors;
 
 import React from "react";
+import ReactMarkdown from "react-markdown";
 
 const Mentors = () => {
   const mentor = {
-    name: "Dr. Ananya Sharma",
-    title: "Holistic Wellness Expert",
+    name: "Dr. Chinmay Pandya",
+    title:
+      "Pro Vice-Chancellor, Dev Sanskriti Vishwavidyalaya (MBBS, PGDipl, MRCPsych – London)",
     images: [
-      "https://via.placeholder.com/300x300?text=Ananya+Sharma+1",
-      "https://via.placeholder.com/300x300?text=Ananya+Sharma+2",
-      "https://via.placeholder.com/300x300?text=Ananya+Sharma+3",
+      "https://jogire.s3.ap-south-1.amazonaws.com/static/aboutus/mentors/mentor2.webp",
+      "https://jogire.s3.ap-south-1.amazonaws.com/static/aboutus/mentors/mentor1.webp",
+      "https://jogire.s3.ap-south-1.amazonaws.com/static/aboutus/mentors/mentor3.webp",
     ],
     bio: [
-      // Section 1: Image Left, Text Right (~333 words)
-      `Dr. Ananya Sharma is a beacon of holistic wellness, guiding countless individuals toward a balanced life through yoga and Ayurveda. With over 15 years of experience, she holds a Ph.D. in Yogic Sciences and has dedicated her life to blending ancient wisdom with modern science. Her journey began in the serene foothills of the Himalayas, where she studied under revered sages, mastering the art of yoga and its transformative power. Ananya’s approach is unique—she sees yoga not just as a physical practice but as a way to align the mind, body, and spirit. She believes that true health stems from within, and her teachings reflect this philosophy. Over the years, she has conducted workshops across India, sharing techniques that promote mental clarity and physical vitality. Her warm demeanor and deep knowledge make her a beloved mentor to students worldwide. Ananya’s work with the All World Gayatri Pariwar has further amplified her reach, inspiring millions to adopt yoga as a daily ritual. She emphasizes the power of breath—pranayama—as a tool to unlock inner peace, often weaving it into her sessions with mantra chanting and meditation. Her holistic vision includes dietary guidance rooted in Ayurveda, helping people heal naturally. This first chapter of her story showcases her as a pioneer who bridges tradition and modernity, offering practical tools for today’s fast-paced world.`,
+      // Section 1: Image Left, Text Right
+      `
+## Our Mentor: Dr. Chinmay Pandya
 
-      // Section 2: Image Right, Text Left (~333 words)
-      `Beyond her technical expertise, Ananya’s philosophy centers on self-transformation. She views yoga as a journey inward, a path to shed ego and embrace authenticity. Her teachings often revolve around mindfulness, encouraging students to live with intention and awareness. During her travels, she observed how stress and modern lifestyles disconnect people from their roots, prompting her to develop Pragya Yoga—a blend of asanas, breathwork, and contemplation tailored for urban dwellers. This innovative practice has gained traction globally, with practitioners praising its simplicity and depth. Ananya’s sessions are more than classes; they’re experiences that leave participants rejuvenated and inspired. She has authored several books, including *The Essence of Pragya Yoga*, which distill her insights into accessible guides. Her work with communities—especially women and youth—reflects her commitment to social upliftment. She believes that yoga can empower individuals to overcome challenges, fostering resilience and inner strength. Ananya’s Ayurvedic expertise shines in her focus on gut health, linking it to mental well-being. She often shares recipes and lifestyle tips, making wellness approachable. Her lectures at international conferences have earned her accolades, positioning her as a thought leader in integrative health. This second chapter of her journey highlights her role as a reformer, adapting ancient practices for contemporary needs while staying true to their essence.`,
+Dr. Chinmay Pandya stands as a revered spiritual mentor and thought leader, bridging the realms of science and spirituality. A trained psychiatrist who served in the British National Health Service, Dr. Pandya returned to India to advance the spiritual and cultural mission of his grandfather, Pt. Shriram Sharma Acharya — the founder of the All World Gayatri Pariwar (AWGP). As the Pro Vice-Chancellor of DSVV, he has pioneered a holistic education model that integrates ancient Indian wisdom with modern disciplines.
 
-      // Section 3: Image Left, Text Right (~333 words)
-      `Dr. Ananya Sharma’s legacy extends beyond techniques—it’s about inspiring a movement. Her vision is to create a world where wellness is a way of life, not a luxury. She founded the Jogire Wellness Retreat, a sanctuary where people reconnect with themselves through yoga, nature, and community. This retreat has become a pilgrimage site for seekers, offering immersive programs that blend meditation, therapy, and detox. Ananya’s emphasis on stress management has resonated with professionals, with corporations inviting her to train employees in mindfulness. Her approach is grounded in evidence—she collaborates with scientists to study yoga’s effects on the brain and body, publishing findings that validate its benefits. Her third chapter is one of impact: she has trained over 500 yoga instructors, ensuring her teachings ripple outward. Ananya’s personal life mirrors her philosophy—she lives simply, surrounded by nature, practicing what she preaches. Her mornings begin with sunrise meditation, a ritual she shares with students online. She advocates for sustainability, weaving eco-conscious living into her teachings. Her influence is felt in the countless testimonials from those she’s touched—people who’ve found peace, healed from illness, or rediscovered purpose. Ananya’s dream is a global wellness revolution, and she’s steadily building it, one breath at a time. This final chapter celebrates her as a visionary whose work transcends borders, uniting people in the pursuit of harmony.`,
+Through his visionary leadership, Dr. Pandya has inspired a movement of Sanskritik Punarjanma (Cultural Renaissance) by aligning consciousness-based learning with global spiritual unity. His dedication continues to elevate DSVV as a global spiritual and educational institution.
+`,
+
+      // Section 2: Image Right, Text Left
+      `
+## Contributions & Leadership
+
+- **Editor** – Dev Sanskriti, an interdisciplinary international journal.
+- **Vice President** – Indian Yoga Association.
+- **Chairperson** – International Festival of Yoga, Culture and Spirituality.
+- **Director** – Global Covenant of Religions (GCR) (a UN Security Council initiative).
+- **Founder** Patron – Rishihood University.
+- **Founder** – South Asian Institute of Peace & Reconciliation.
+- **Co-founder** – First Centre for Baltic Culture and Studies of Asia.
+- **Core Committee Member** – International Day of Yoga.
+- **Judge** – Templeton Prize Committee.
+- **Honorary Member** – Senate of the University of Latvia.
+- **Member** – Governing Council, Indian Council for Cultural Relations (ICCR).
+- **Invited Representative** – Ministry of AYUSH, for enlisting Yoga in the UNESCO Intangible Cultural Heritage List.
+- **Non-officio Member** – Ministry of Culture (GoI).
+`,
+
+      // Section 3: Image Left, Text Right
+      `
+## Global Impact & Recognition
+
+Dr. Pandya has presented lectures and research across leading institutions such as the United Nations, University of Cambridge, IITs, IIMs, BARC, DRDO, and more. He has convened over 200 international and national colloquia, contributing to topics ranging from indigenous rights to Vedic science.
+
+He has represented India at the UNESCO Inter-Governmental Meeting on Intangible Cultural Heritage and participated in the Inter-Parliamentary Conference on Interfaith Dialogue in Morocco.
+
+### Honors & Awards:
+- **Bharat Gaurav Award** – House of Commons, UK (2023)
+- **Erasmus+ Scholarship** – Prestigious international academic recognition
+`,
     ],
     specialties: [
       "Yoga Therapy",
@@ -122,20 +156,21 @@ const Mentors = () => {
       "Mindfulness Meditation",
       "Stress Management",
     ],
-    email: "ananya@jogire.com",
+    email: "chinmay@jogire.com",
     phone: "+91-98765-43210",
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-200 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl w-full mx-auto">
+      <div className="max-w-6xl w-full mx-auto">
         {/* Header */}
         <h1 className="text-4xl font-bold text-[#d67952] text-center mb-8">
           Our Mentors
         </h1>
         <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-          Meet the guiding lights of Jogire—experts dedicated to your journey of
-          wellness, blending ancient wisdom with modern insight.
+          Meet the guiding light of Jogire—We are deeply honored to be guided by
+          Dr. Chinmay Pandya, the esteemed Pro Vice-Chancellor of Dev Sanskriti
+          Vishwavidyalaya (DSVV).
         </p>
 
         {/* Section 1: Image Left, Text Right */}
@@ -152,7 +187,9 @@ const Mentors = () => {
               {mentor.name}
             </h2>
             <p className="text-[#d67952] font-medium mb-4">{mentor.title}</p>
-            <p>{mentor.bio[0]}</p>
+            <div className="prose">
+              <ReactMarkdown>{mentor.bio[0]}</ReactMarkdown>
+            </div>
           </div>
         </div>
 
@@ -166,7 +203,9 @@ const Mentors = () => {
             />
           </div>
           <div className="md:w-2/3 text-gray-700">
-            <p>{mentor.bio[1]}</p>
+            <div className="prose">
+              <ReactMarkdown>{mentor.bio[1]}</ReactMarkdown>
+            </div>
           </div>
         </div>
 
@@ -180,7 +219,9 @@ const Mentors = () => {
             />
           </div>
           <div className="md:w-2/3 text-gray-700">
-            <p>{mentor.bio[2]}</p>
+            <div className="prose">
+              <ReactMarkdown>{mentor.bio[2]}</ReactMarkdown>
+            </div>
           </div>
         </div>
       </div>
