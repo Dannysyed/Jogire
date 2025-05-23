@@ -990,11 +990,14 @@ const DietPlanForm = ({ formType }) => {
       setStatus({ success: false, error: null });
 
       try {
-        const response = await fetch("http://localhost:8080/api/v1/diet-plan", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
+        const response = await fetch(
+          "https://jogire-backend.onrender.com/api/v1/diet-plan",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          }
+        );
 
         if (!response.ok) {
           const errorData = await response.json();
