@@ -472,7 +472,7 @@ const GroupYogaClassForm = ({ formType }) => {
 
       try {
         const response = await fetch(
-          "http://localhost:8080/api/v1/group-yoga",
+          "https://jogire-backend.onrender.com/api/v1/group-yoga",
           {
             method: "POST",
             headers: {

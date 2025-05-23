@@ -179,7 +179,7 @@ const PersonalYogaClassForm = ({ formType }) => {
 
       try {
         const response = await fetch(
-          "http://localhost:8080/api/v1/personal-yoga",
+          "https://jogire-backend.onrender.com/api/v1/personal-yoga",
           {
             method: "POST",
             headers: {
