@@ -9,8 +9,6 @@ import "./index.css";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
 import WhatsappContact from "./components/WhatsappContact";
-// import YogaClassForm from "./components/YogaClassForm";
-// import DietPlanForm from "./components/DietPlanForm";
 // import CounselingForm from "./components/CounselingForm";
 // import AnthemSection from "./components/AnthemSection";
 import TestimonialPage from "./pages/TestimonialPage";
@@ -20,6 +18,9 @@ import AddBlogForm from "./components/AddBlogForm";
 import GurusPage from "./pages/GurusPage";
 import MissionPage from "./pages/MissionPage";
 import MentorsPage from "./pages/MentorsPage";
+import GroupYogaClassForm from "./components/GroupYogaClassForm";
+import PersonalYogaClassForm from "./components/PersonalYogaClassForm";
+import DietPlanForm from "./components/DietPlanForm";
 
 function App() {
   return (
@@ -38,12 +39,22 @@ function App() {
         <Route path="/blogs" element={<BlogsPage />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/admin/add-blog" element={<AddBlogForm />} />
+        <Route
+          path="/services/group-yoga-class"
+          element={<GroupYogaClassForm formType="group-yoga" />}
+        />
+        <Route
+          path="/services/personal-yoga-class"
+          element={<PersonalYogaClassForm formType="personal-yoga" />}
+        />
+        <Route
+          path="/services/diet-plan"
+          element={<DietPlanForm formType="diet-plan" />}
+        />
       </Routes>
       <Footer />
       <WhatsappContact />
-      {/* <YogaClassForm />
-      <DietPlanForm />
-      <CounselingForm />
+      {/*<CounselingForm />
       <AnthemSection /> */}
     </Router>
   );

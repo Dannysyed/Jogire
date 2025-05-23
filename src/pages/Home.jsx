@@ -4,8 +4,15 @@ import Services from "../components/Services";
 import Team from "../components/Team";
 import FAQ from "../components/FAQ";
 import TestimonialSection from "../components/TestimonialSection";
+import TypewriterParagraph from "../components/TypewriterParagraph";
 
 const Home = () => {
+  const messages = [
+    "Compromised physical and mental health for job, money, and family responsibilities? Join us to make yourself a priority.",
+    "Reclaim your energy, focus, and inner peace. Your well-being matters.",
+    "Start your journey from being a compulsive bhogi to a conscious bhogi.",
+  ];
+
   return (
     <div className="min-h-screen text-gray-900 bg-gray-50">
       {/* Hero Section */}
@@ -13,10 +20,13 @@ const Home = () => {
         <h1 className="text-2xl md:text-4xl font-extrabold mb-6 text-[#d67952] animate-fade-in">
           Take charge of your health with Yoga, Mindfulness & Aahar
         </h1>
-        <p className="text-lg md:text-xl text-gray-600 max-w-2xl animate-fade-in delay-200">
-          Compromised, physical and mental health for job money and family
-          responsibilities? Join us to make yourself a priority.
-        </p>
+        <TypewriterParagraph
+          messages={messages}
+          typingSpeed={50}
+          deletingSpeed={30}
+          pauseTime={5000}
+          className=""
+        />
       </section>
 
       {/* Carousel */}
