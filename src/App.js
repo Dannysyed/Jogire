@@ -21,6 +21,9 @@ import MentorsPage from "./pages/MentorsPage";
 import GroupYogaClassForm from "./components/GroupYogaClassForm";
 import PersonalYogaClassForm from "./components/PersonalYogaClassForm";
 import DietPlanForm from "./components/DietPlanForm";
+import GutHealthForm from "./components/GutHealthForm";
+import MentalHealthForm from "./components/MentalHealthForm";
+import MetabolicHealthForm from "./components/MetabolicHealthForm";
 
 function App() {
   return (
@@ -50,6 +53,18 @@ function App() {
         <Route
           path="/services/diet-plan"
           element={<DietPlanForm formType="diet-plan" />}
+        />
+        <Route
+          path="/services/gut-health"
+          element={<GutHealthForm formType="gut-health" />}
+        />
+        <Route
+          path="/services/mental-health"
+          element={<MentalHealthForm formType="mental-health" />}
+        />
+        <Route
+          path="/services/metabolic-health"
+          element={<MetabolicHealthForm formType="metabolic-health" />}
         />
       </Routes>
       <Footer />
