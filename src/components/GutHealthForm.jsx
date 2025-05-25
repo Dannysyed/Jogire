@@ -20,7 +20,6 @@ import {
   FaSpinner,
 } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import PropTypes from "prop-types";
 import Modal from "react-modal";
 import {
   CheckCircleIcon,
@@ -31,32 +30,7 @@ import { useNavigate } from "react-router-dom";
 // Bind modal to app element for accessibility
 Modal.setAppElement("#root");
 
-const DietPlanForm = ({ formType }) => {
-  const FORM_CONFIG = {
-    "diet-plan": {
-      title: "Diet Counselling (Aahar) Sign-Up",
-      courseType: "diet-plan",
-      courseLabel: "Diet Counselling (Aahar)",
-    },
-    "gut-health": {
-      title: "Gut Health Program Sign-Up",
-      courseType: "gut-health",
-      courseLabel: "Gut Health Program",
-    },
-    "mental-health": {
-      title: "Mental Health Program Sign-Up",
-      courseType: "mental-health",
-      courseLabel: "Mental Health Program",
-    },
-    "metabolic-health": {
-      title: "Metabolic Health Program Sign-Up",
-      courseType: "metabolic-health",
-      courseLabel: "Metabolic Health Program",
-    },
-  };
-
-  const config = FORM_CONFIG[formType] || FORM_CONFIG["diet-plan"];
-
+const GutHealthForm = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name: "",
@@ -67,20 +41,30 @@ const DietPlanForm = ({ formType }) => {
     height: "",
     weight: "",
     goalWeight: "",
-    dietaryGoal: "",
-    activityLevel: "",
-    waterIntake: "",
-    schedule: "",
-    foodPrefs: "",
-    dietaryRestrictions: "",
-    cookingAbility: "",
-    budget: "",
+    rapidWeightChange: "",
+    rapidWeightChangeDetails: "",
+    digestiveSymptoms: [],
+    symptomFrequency: "",
     medicalConditions: "",
     medications: "",
     supplements: "",
+    allergies: "",
+    dietaryPreferences: "",
+    fiberIntake: "",
+    fermentedFoods: "",
+    sugarProcessedFoods: "",
+    hydration: "",
     mealFrequency: "",
+    foodPreferences: "",
+    dietaryRestrictions: "",
+    activityLevel: "",
+    stressLevel: "",
+    sleepQuality: "",
+    dailySchedule: "",
+    gutHealthGoal: "",
+    cookingAbility: "",
+    budget: "",
     notes: "",
-    courseType: config.courseType,
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -102,18 +86,29 @@ const DietPlanForm = ({ formType }) => {
       height: "",
       weight: "",
       goalWeight: "",
-      dietaryGoal: "",
-      activityLevel: "",
-      waterIntake: "",
-      schedule: "",
-      foodPrefs: "",
-      dietaryRestrictions: "",
-      cookingAbility: "",
-      budget: "",
+      rapidWeightChange: "",
+      rapidWeightChangeDetails: "",
+      digestiveSymptoms: [],
+      symptomFrequency: "",
       medicalConditions: "",
       medications: "",
       supplements: "",
+      allergies: "",
+      dietaryPreferences: "",
+      fiberIntake: "",
+      fermentedFoods: "",
+      sugarProcessedFoods: "",
+      hydration: "",
       mealFrequency: "",
+      foodPreferences: "",
+      dietaryRestrictions: "",
+      activityLevel: "",
+      stressLevel: "",
+      sleepQuality: "",
+      dailySchedule: "",
+      gutHealthGoal: "",
+      cookingAbility: "",
+      budget: "",
       notes: "",
     });
     setErrors({});
@@ -149,7 +144,7 @@ const DietPlanForm = ({ formType }) => {
       } else if (currentStep === 2) {
         if (!formData.height) newErrors.height = "Height is required";
         else if (formData.height < 50 || formData.height > 300)
-          newErrors.height = "Height must be between 50 and 300";
+          newErrors.height = "Height must be between 50 and 300 cm";
         if (!formData.weight) newErrors.weight = "Current weight is required";
         else if (formData.weight < 10 || formData.weight > 300)
           newErrors.weight = "Weight must be between 10 and 300 kg";
@@ -159,33 +154,70 @@ const DietPlanForm = ({ formType }) => {
             newErrors.goalWeight = "Goal weight must be between 10 and 300 kg";
           }
         }
+        if (!formData.rapidWeightChange)
+          newErrors.rapidWeightChange =
+            "Please select whichever applicable to you";
+        if (formData.rapidWeightChange === "No")
+          formData.rapidWeightChangeDetails = "Not Specified";
+        if (
+          formData.rapidWeightChange === "Rapid Weight Gain" ||
+          formData.rapidWeightChange === "Rapid Weight Loss"
+        ) {
+          const value = formData.rapidWeightChangeDetails;
+
+          if (!value) {
+            newErrors.rapidWeightChangeDetails = "This field is required";
+          } else {
+            const rapidWeightChangeDetails = Number(value);
+            if (
+              isNaN(rapidWeightChangeDetails) ||
+              rapidWeightChangeDetails < 5 ||
+              rapidWeightChangeDetails > 30
+            ) {
+              newErrors.rapidWeightChangeDetails =
+                "Weight must be between 5 to 30 kg";
+            }
+          }
+        }
       } else if (currentStep === 3) {
-        if (!formData.dietaryGoal)
-          newErrors.dietaryGoal = "Dietary goal is required";
-        if (!formData.activityLevel)
-          newErrors.activityLevel = "Activity level is required";
-        if (!formData.waterIntake)
-          newErrors.waterIntake = "Water intake is required";
-        else if (formData.waterIntake < 0 || formData.waterIntake > 10)
-          newErrors.waterIntake =
-            "Water intake must be between 0 and 10 liters";
-        if (!formData.schedule.trim())
-          newErrors.schedule = "Schedule is required";
-      } else if (currentStep === 4) {
-        if (!formData.foodPrefs.trim())
-          newErrors.foodPrefs = "Food preferences are required";
-        if (!formData.dietaryRestrictions.trim())
-          newErrors.dietaryRestrictions =
-            "Dietary restrictions are required (enter 'None' if none)";
-        if (!formData.cookingAbility)
-          newErrors.cookingAbility = "Cooking ability is required";
-      } else if (currentStep === 5) {
+        if (formData.digestiveSymptoms.length === 0)
+          newErrors.digestiveSymptoms = "At least one option must be selected";
+        if (!formData.symptomFrequency)
+          newErrors.symptomFrequency = "Symptom frequency is required";
         if (!formData.medicalConditions.trim())
           newErrors.medicalConditions =
             "Medical conditions are required (enter 'None' if none)";
-      } else if (currentStep === 6) {
+      } else if (currentStep === 4) {
+        if (!formData.dietaryPreferences)
+          newErrors.dietaryPreferences = "Dietary preference is required";
+        if (!formData.fiberIntake)
+          newErrors.fiberIntake = "Fiber intake is required";
+        if (!formData.fermentedFoods)
+          newErrors.fermentedFoods = "Fermented foods frequency is required";
+        if (!formData.sugarProcessedFoods)
+          newErrors.sugarProcessedFoods =
+            "Sugar/processed foods frequency is required";
+        if (!formData.hydration)
+          newErrors.hydration = "Hydration level is required";
+        else if (formData.hydration < 0 || formData.hydration > 10)
+          newErrors.hydration = "Hydration must be between 0 and 10 liters";
         if (!formData.mealFrequency)
           newErrors.mealFrequency = "Meal frequency is required";
+      } else if (currentStep === 5) {
+        if (!formData.activityLevel)
+          newErrors.activityLevel = "Activity level is required";
+        if (!formData.stressLevel)
+          newErrors.stressLevel = "Stress level is required";
+        if (!formData.sleepQuality)
+          newErrors.sleepQuality = "Sleep quality is required";
+        if (!formData.dailySchedule.trim())
+          newErrors.dailySchedule = "Daily schedule is required";
+      } else if (currentStep === 6) {
+        if (!formData.gutHealthGoal)
+          newErrors.gutHealthGoal = "Gut health goal is required";
+        if (!formData.cookingAbility)
+          newErrors.cookingAbility = "Cooking ability is required";
+        if (!formData.budget) newErrors.budget = "Budget is required";
       }
       setErrors(newErrors);
       return Object.keys(newErrors).length === 0;
@@ -196,8 +228,17 @@ const DietPlanForm = ({ formType }) => {
   // Handle input change
   const handleChange = useCallback(
     (e) => {
-      const { id, value } = e.target;
-      setFormData((prev) => ({ ...prev, [id]: value }));
+      const { id, value, type, checked } = e.target;
+      if (type === "checkbox") {
+        setFormData((prev) => {
+          const updatedSymptoms = checked
+            ? [...prev.digestiveSymptoms, value]
+            : prev.digestiveSymptoms.filter((symptom) => symptom !== value);
+          return { ...prev, digestiveSymptoms: updatedSymptoms };
+        });
+      } else {
+        setFormData((prev) => ({ ...prev, [id]: value }));
+      }
       if (errors[id]) setErrors((prev) => ({ ...prev, [id]: "" }));
     },
     [errors]
@@ -225,10 +266,9 @@ const DietPlanForm = ({ formType }) => {
 
       setIsSubmitting(true);
       setStatus({ success: false, error: null });
-
       try {
         const response = await fetch(
-          "https://jogire-backend.onrender.com/api/v1/diet-plan",
+          "https://jogire-backend.onrender.com/api/v1/gut-health",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -308,16 +348,16 @@ const DietPlanForm = ({ formType }) => {
                       <FaRulerVertical className="w-4 h-4 sm:w-5 sm:h-5" />
                     )}
                     {s === 3 && (
-                      <FaBullseye className="w-4 h-4 sm:w-5 sm:h-5" />
+                      <FaNotesMedical className="w-4 h-4 sm:w-5 sm:h-5" />
                     )}
                     {s === 4 && (
                       <FaUtensils className="w-4 h-4 sm:w-5 sm:h-5" />
                     )}
                     {s === 5 && (
-                      <FaNotesMedical className="w-4 h-4 sm:w-5 sm:h-5" />
+                      <FaDumbbell className="w-4 h-4 sm:w-5 sm:h-5" />
                     )}
                     {s === 6 && (
-                      <FaUtensils className="w-4 h-4 sm:w-5 sm:h-5" />
+                      <FaBullseye className="w-4 h-4 sm:w-5 sm:h-5" />
                     )}
                     {s === 7 && <FaCheck className="w-4 h-4 sm:w-5 sm:h-5" />}
                   </div>
@@ -338,7 +378,7 @@ const DietPlanForm = ({ formType }) => {
           Step {step} of {totalSteps}
         </h2>
         <h1 className="text-orange-800 text-center text-2xl mb-6 font-bold">
-          {config.title}
+          Gut Health Program Sign-Up
         </h1>
 
         <form ref={formRef} onSubmit={handleSubmit}>
@@ -509,6 +549,9 @@ const DietPlanForm = ({ formType }) => {
                       <option value="male">Male</option>
                       <option value="female">Female</option>
                       <option value="other">Other</option>
+                      <option value="prefer not to say">
+                        Prefer not to say
+                      </option>
                     </select>
                     {errors.gender && (
                       <p
@@ -522,7 +565,6 @@ const DietPlanForm = ({ formType }) => {
                 </div>
               </motion.div>
             )}
-
             {step === 2 && (
               <motion.div
                 key="step2"
@@ -622,13 +664,13 @@ const DietPlanForm = ({ formType }) => {
                       value={formData.goalWeight}
                       onChange={handleChange}
                       className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
-                        errors.weight
+                        errors.goalWeight
                           ? "border-red-500 focus:ring-red-500"
                           : "focus:ring-orange-800"
                       }`}
                       placeholder="e.g., 65"
                       aria-describedby={
-                        errors.weight ? "goalWeight-error" : undefined
+                        errors.goalWeight ? "goalWeight-error" : undefined
                       }
                       disabled={isSubmitting}
                     />
@@ -641,6 +683,94 @@ const DietPlanForm = ({ formType }) => {
                       </p>
                     )}
                   </div>
+
+                  <div className="mb-4">
+                    <motion.label
+                      variants={labelVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                      htmlFor="rapidWeightChange"
+                    >
+                      <FaWeight className="mr-2 text-red-800" />
+                      Have you experienced any rapid weight change in the past 6
+                      months?
+                    </motion.label>
+                    <select
+                      id="rapidWeightChange"
+                      value={formData.rapidWeightChange}
+                      onChange={handleChange}
+                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
+                        errors.rapidWeightChange
+                          ? "border-red-500 focus:ring-red-500"
+                          : "focus:ring-orange-800"
+                      }`}
+                      aria-describedby={
+                        errors.rapidWeightChange
+                          ? "rapidWeightChange-error"
+                          : undefined
+                      }
+                      disabled={isSubmitting}
+                    >
+                      <option value="">Select Option</option>
+                      <option value="Rapid Weight Gain">
+                        Rapid Weight Gain
+                      </option>
+                      <option value="Rapid Weight Loss">
+                        Rapid Weight Loss
+                      </option>
+                      <option value="No">No</option>
+                    </select>
+                    {errors.rapidWeightChange && (
+                      <p
+                        id="rapidWeightChange-error"
+                        className="text-red-500 text-xs mt-1"
+                      >
+                        {errors.rapidWeightChange}
+                      </p>
+                    )}
+                  </div>
+                  {(formData.rapidWeightChange === "Rapid Weight Gain" ||
+                    formData.rapidWeightChange === "Rapid Weight Loss") && (
+                    <div className="mb-4">
+                      <motion.label
+                        variants={labelVariants}
+                        initial="hidden"
+                        animate="visible"
+                        className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                        htmlFor="rapidWeightChangeDetails"
+                      >
+                        <FaWeight className="mr-2 text-red-800" />
+                        How much weight did you gain/lose (in kgs) ?
+                      </motion.label>
+                      <input
+                        id="rapidWeightChangeDetails"
+                        type="number"
+                        value={formData.rapidWeightChangeDetails}
+                        onChange={handleChange}
+                        className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
+                          errors.rapidWeightChangeDetails
+                            ? "border-red-500 focus:ring-red-500"
+                            : "focus:ring-orange-800"
+                        }`}
+                        placeholder="e.g., 10"
+                        aria-describedby={
+                          errors.rapidWeightChangeDetails
+                            ? "rapidWeightChangeDetails-error"
+                            : undefined
+                        }
+                        disabled={isSubmitting}
+                      />
+                      {errors.rapidWeightChangeDetails && (
+                        <p
+                          id="rapidWeightChangeDetails-error"
+                          className="text-red-500 text-xs mt-1"
+                        >
+                          {errors.rapidWeightChangeDetails}
+                        </p>
+                      )}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             )}
@@ -653,7 +783,7 @@ const DietPlanForm = ({ formType }) => {
                 animate="visible"
                 exit="exit"
               >
-                {/* Step 3: Goals and Lifestyle */}
+                {/* Step 3: Gut Health and Medical History */}
                 <div className="grid grid-cols-1 gap-4">
                   <div className="mb-4">
                     <motion.label
@@ -661,323 +791,96 @@ const DietPlanForm = ({ formType }) => {
                       initial="hidden"
                       animate="visible"
                       className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
-                      htmlFor="dietaryGoal"
+                      htmlFor="digestiveSymptoms"
                     >
-                      <FaBullseye className="mr-2 text-orange-800" />
-                      Dietary Goal
+                      <FaNotesMedical className="mr-2 text-orange-800" />
+                      Digestive Symptoms
+                    </motion.label>
+                    {/* <div className="space-y-2"> */}
+                    <div className="space-y-2 grid grid-cols-2 gap-2">
+                      {[
+                        "Bloating",
+                        "Gas",
+                        "Constipation",
+                        "Diarrhea",
+                        "Abdominal Pain",
+                        "Acid Reflux",
+                        "Burping",
+                        "Stool not formed",
+                        "Food pieces in stool",
+                        "Sticky stool ",
+                        "Toilet 3+ times daily",
+                        "Loss of appetite",
+                        "Heartburn",
+                        "None",
+                      ].map((symptom) => (
+                        <label key={symptom} className="flex items-center">
+                          <input
+                            type="checkbox"
+                            value={symptom}
+                            checked={formData.digestiveSymptoms.includes(
+                              symptom
+                            )}
+                            onChange={handleChange}
+                            className="mr-2"
+                            disabled={isSubmitting}
+                          />
+                          {symptom}
+                        </label>
+                      ))}
+                    </div>
+                    {errors.digestiveSymptoms && (
+                      <p
+                        id="digestiveSymptoms-error"
+                        className="text-red-500 text-xs mt-1"
+                      >
+                        {errors.digestiveSymptoms}
+                      </p>
+                    )}
+                  </div>
+                  <div className="mb-4">
+                    <motion.label
+                      variants={labelVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                      htmlFor="symptomFrequency"
+                    >
+                      <FaNotesMedical className="mr-2 text-orange-800" />
+                      Frequency of Symptoms
                     </motion.label>
                     <select
-                      id="dietaryGoal"
-                      value={formData.dietaryGoal}
+                      id="symptomFrequency"
+                      value={formData.symptomFrequency}
                       onChange={handleChange}
                       className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
-                        errors.dietaryGoal
+                        errors.symptomFrequency
                           ? "border-red-500 focus:ring-red-500"
                           : "focus:ring-orange-800"
                       }`}
                       aria-describedby={
-                        errors.dietaryGoal ? "dietaryGoal-error" : undefined
-                      }
-                      disabled={isSubmitting}
-                    >
-                      <option value="">Select Goal</option>
-                      <option value="weight-loss">Weight Loss</option>
-                      <option value="muscle-gain">Muscle Gain</option>
-                      <option value="general-health">General Health</option>
-                      <option value="medical">
-                        Medical Condition Management
-                      </option>
-                    </select>
-                    {errors.dietaryGoal && (
-                      <p
-                        id="dietaryGoal-error"
-                        className="text-red-500 text-xs mt-1"
-                      >
-                        {errors.dietaryGoal}
-                      </p>
-                    )}
-                  </div>
-                  <div className="mb-4">
-                    <motion.label
-                      variants={labelVariants}
-                      initial="hidden"
-                      animate="visible"
-                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
-                      htmlFor="activityLevel"
-                    >
-                      <FaDumbbell className="mr-2 text-orange-800" />
-                      Activity Level
-                    </motion.label>
-                    <select
-                      id="activityLevel"
-                      value={formData.activityLevel}
-                      onChange={handleChange}
-                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
-                        errors.activityLevel
-                          ? "border-red-500 focus:ring-red-500"
-                          : "focus:ring-orange-800"
-                      }`}
-                      aria-describedby={
-                        errors.activityLevel ? "activityLevel-error" : undefined
-                      }
-                      disabled={isSubmitting}
-                    >
-                      <option value="">Select Activity Level</option>
-                      <option value="sedentary">Sedentary</option>
-                      <option value="light">Lightly Active</option>
-                      <option value="moderate">Moderately Active</option>
-                      <option value="very">Very Active</option>
-                    </select>
-                    {errors.activityLevel && (
-                      <p
-                        id="activityLevel-error"
-                        className="text-red-500 text-xs mt-1"
-                      >
-                        {errors.activityLevel}
-                      </p>
-                    )}
-                  </div>
-                  <div className="mb-4">
-                    <motion.label
-                      variants={labelVariants}
-                      initial="hidden"
-                      animate="visible"
-                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
-                      htmlFor="waterIntake"
-                    >
-                      <FaTint className="mr-2 text-orange-800" />
-                      Daily Water Intake (liters)
-                    </motion.label>
-                    <input
-                      id="waterIntake"
-                      type="number"
-                      step="0.1"
-                      value={formData.waterIntake}
-                      onChange={handleChange}
-                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
-                        errors.waterIntake
-                          ? "border-red-500 focus:ring-red-500"
-                          : "focus:ring-orange-800"
-                      }`}
-                      placeholder="e.g., 2.5"
-                      aria-describedby={
-                        errors.waterIntake ? "waterIntake-error" : undefined
-                      }
-                      disabled={isSubmitting}
-                    />
-                    {errors.waterIntake && (
-                      <p
-                        id="waterIntake-error"
-                        className="text-red-500 text-xs mt-1"
-                      >
-                        {errors.waterIntake}
-                      </p>
-                    )}
-                  </div>
-                  <div className="mb-4">
-                    <motion.label
-                      variants={labelVariants}
-                      initial="hidden"
-                      animate="visible"
-                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
-                      htmlFor="schedule"
-                    >
-                      <FaClock className="mr-2 text-orange-800" />
-                      Typical Daily Schedule
-                    </motion.label>
-                    <textarea
-                      id="schedule"
-                      value={formData.schedule}
-                      onChange={handleChange}
-                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
-                        errors.schedule
-                          ? "border-red-500 focus:ring-red-500"
-                          : "focus:ring-orange-800"
-                      }`}
-                      placeholder="e.g., Breakfast at 7 AM, Lunch at 1 PM..."
-                      rows="3"
-                      aria-describedby={
-                        errors.schedule ? "schedule-error" : undefined
-                      }
-                      disabled={isSubmitting}
-                    />
-                    {errors.schedule && (
-                      <p
-                        id="schedule-error"
-                        className="text-red-500 text-xs mt-1"
-                      >
-                        {errors.schedule}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            )}
-
-            {step === 4 && (
-              <motion.div
-                key="step4"
-                variants={stepVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-              >
-                {/* Step 4: Food Preferences and Restrictions */}
-                <div className="grid grid-cols-1 gap-4">
-                  <div className="mb-4">
-                    <motion.label
-                      variants={labelVariants}
-                      initial="hidden"
-                      animate="visible"
-                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
-                      htmlFor="foodPrefs"
-                    >
-                      <FaUtensils className="mr-2 text-orange-800" />
-                      Food Preferences
-                    </motion.label>
-                    <textarea
-                      id="foodPrefs"
-                      value={formData.foodPrefs}
-                      onChange={handleChange}
-                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
-                        errors.foodPrefs
-                          ? "border-red-500 focus:ring-red-500"
-                          : "focus:ring-orange-800"
-                      }`}
-                      placeholder="e.g., Love chicken, dislike fish"
-                      rows="3"
-                      aria-describedby={
-                        errors.foodPrefs ? "foodPrefs-error" : undefined
-                      }
-                      disabled={isSubmitting}
-                    />
-                    {errors.foodPrefs && (
-                      <p
-                        id="foodPrefs-error"
-                        className="text-red-500 text-xs mt-1"
-                      >
-                        {errors.foodPrefs}
-                      </p>
-                    )}
-                  </div>
-                  <div className="mb-4">
-                    <motion.label
-                      variants={labelVariants}
-                      initial="hidden"
-                      animate="visible"
-                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
-                      htmlFor="dietaryRestrictions"
-                    >
-                      <FaBan className="mr-2 text-orange-800" />
-                      Dietary Restrictions
-                    </motion.label>
-                    <textarea
-                      id="dietaryRestrictions"
-                      value={formData.dietaryRestrictions}
-                      onChange={handleChange}
-                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
-                        errors.dietaryRestrictions
-                          ? "border-red-500 focus:ring-red-500"
-                          : "focus:ring-orange-800"
-                      }`}
-                      placeholder="e.g., Vegetarian, No Dairy, None"
-                      rows="3"
-                      aria-describedby={
-                        errors.dietaryRestrictions
-                          ? "dietaryRestrictions-error"
-                          : undefined
-                      }
-                      disabled={isSubmitting}
-                    />
-                    {errors.dietaryRestrictions && (
-                      <p
-                        id="dietaryRestrictions-error"
-                        className="text-red-500 text-xs mt-1"
-                      >
-                        {errors.dietaryRestrictions}
-                      </p>
-                    )}
-                  </div>
-                  <div className="mb-4">
-                    <motion.label
-                      variants={labelVariants}
-                      initial="hidden"
-                      animate="visible"
-                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
-                      htmlFor="cookingAbility"
-                    >
-                      <FaUtensils className="mr-2 text-orange-800" />
-                      Cooking Ability
-                    </motion.label>
-                    <select
-                      id="cookingAbility"
-                      value={formData.cookingAbility}
-                      onChange={handleChange}
-                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
-                        errors.cookingAbility
-                          ? "border-red-500 focus:ring-red-500"
-                          : "focus:ring-orange-800"
-                      }`}
-                      aria-describedby={
-                        errors.cookingAbility
-                          ? "cookingAbility-error"
+                        errors.symptomFrequency
+                          ? "symptomFrequency-error"
                           : undefined
                       }
                       disabled={isSubmitting}
                     >
-                      <option value="">Select Cooking Ability</option>
-                      <option value="beginner">Beginner</option>
-                      <option value="intermediate">Intermediate</option>
-                      <option value="advanced">Advanced</option>
-                      <option value="quick">Prefer Quick Meals</option>
+                      <option value="">Select Frequency</option>
+                      <option value="Daily">Daily</option>
+                      <option value="Weekly">Weekly</option>
+                      <option value="Monthly">Monthly</option>
+                      <option value="Rarely">Rarely</option>
+                      <option value="Never">Never</option>
                     </select>
-                    {errors.cookingAbility && (
+                    {errors.symptomFrequency && (
                       <p
-                        id="cookingAbility-error"
+                        id="symptomFrequency-error"
                         className="text-red-500 text-xs mt-1"
                       >
-                        {errors.cookingAbility}
+                        {errors.symptomFrequency}
                       </p>
                     )}
                   </div>
-                  <div className="mb-4">
-                    <motion.label
-                      variants={labelVariants}
-                      initial="hidden"
-                      animate="visible"
-                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
-                      htmlFor="budget"
-                    >
-                      <FaUtensils className="mr-2 text-orange-800" />
-                      Budget Constraints (Optional)
-                    </motion.label>
-                    <select
-                      id="budget"
-                      value={formData.budget}
-                      onChange={handleChange}
-                      className="w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-orange-800"
-                      disabled={isSubmitting}
-                    >
-                      <option value="">Select Budget</option>
-                      <option value="low">Low Budget</option>
-                      <option value="moderate">Moderate</option>
-                      <option value="none">No Restrictions</option>
-                    </select>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-
-            {step === 5 && (
-              <motion.div
-                key="step5"
-                variants={stepVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-              >
-                {/* Step 5: Health and Supplements */}
-                <div className="grid grid-cols-1 gap-4">
                   <div className="mb-4">
                     <motion.label
                       variants={labelVariants}
@@ -998,7 +901,7 @@ const DietPlanForm = ({ formType }) => {
                           ? "border-red-500 focus:ring-red-500"
                           : "focus:ring-orange-800"
                       }`}
-                      placeholder="e.g., Type 2 Diabetes, None"
+                      placeholder="e.g., IBS, None"
                       rows="3"
                       aria-describedby={
                         errors.medicalConditions
@@ -1032,7 +935,7 @@ const DietPlanForm = ({ formType }) => {
                       value={formData.medications}
                       onChange={handleChange}
                       className="w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-orange-800"
-                      placeholder="e.g., Metformin, None"
+                      placeholder="e.g., Antibiotics, None"
                       rows="3"
                       disabled={isSubmitting}
                     />
@@ -1053,7 +956,28 @@ const DietPlanForm = ({ formType }) => {
                       value={formData.supplements}
                       onChange={handleChange}
                       className="w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-orange-800"
-                      placeholder="e.g., Multivitamin, None"
+                      placeholder="e.g., Probiotics, None"
+                      rows="3"
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <motion.label
+                      variants={labelVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                      htmlFor="allergies"
+                    >
+                      <FaBan className="mr-2 text-orange-800" />
+                      Food Allergies or Intolerances (Optional)
+                    </motion.label>
+                    <textarea
+                      id="allergies"
+                      value={formData.allergies}
+                      onChange={handleChange}
+                      className="w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-orange-800"
+                      placeholder="e.g., Lactose Intolerance, None"
                       rows="3"
                       disabled={isSubmitting}
                     />
@@ -1061,17 +985,229 @@ const DietPlanForm = ({ formType }) => {
                 </div>
               </motion.div>
             )}
-
-            {step === 6 && (
+            {step === 4 && (
               <motion.div
-                key="step6"
+                key="step4"
                 variants={stepVariants}
                 initial="hidden"
                 animate="visible"
                 exit="exit"
               >
-                {/* Step 6: Meal Preferences and Notes */}
+                {/* Step 4: Dietary Habits */}
                 <div className="grid grid-cols-1 gap-4">
+                  <div className="mb-4">
+                    <motion.label
+                      variants={labelVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                      htmlFor="dietaryPreferences"
+                    >
+                      <FaUtensils className="mr-2 text-orange-800" />
+                      Dietary Preferences
+                    </motion.label>
+                    <select
+                      id="dietaryPreferences"
+                      value={formData.dietaryPreferences}
+                      onChange={handleChange}
+                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
+                        errors.dietaryPreferences
+                          ? "border-red-500 focus:ring-red-500"
+                          : "focus:ring-orange-800"
+                      }`}
+                      aria-describedby={
+                        errors.dietaryPreferences
+                          ? "dietaryPreferences-error"
+                          : undefined
+                      }
+                      disabled={isSubmitting}
+                    >
+                      <option value="">Select Preference</option>
+                      <option value="Omnivore">Omnivore</option>
+                      <option value="Vegetarian">Vegetarian</option>
+                      <option value="Vegan">Vegan</option>
+                      <option value="Pescatarian">Pescatarian</option>
+                      <option value="Keto">Keto</option>
+                      <option value="Paleo">Paleo</option>
+                      <option value="Low FODMAP">Low FODMAP</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    {errors.dietaryPreferences && (
+                      <p
+                        id="dietaryPreferences-error"
+                        className="text-red-500 text-xs mt-1"
+                      >
+                        {errors.dietaryPreferences}
+                      </p>
+                    )}
+                  </div>
+                  <div className="mb-4">
+                    <motion.label
+                      variants={labelVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                      htmlFor="fiberIntake"
+                    >
+                      <FaUtensils className="mr-2 text-orange-800" />
+                      Daily Fiber Intake
+                    </motion.label>
+                    <select
+                      id="fiberIntake"
+                      value={formData.fiberIntake}
+                      onChange={handleChange}
+                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
+                        errors.fiberIntake
+                          ? "border-red-500 focus:ring-red-500"
+                          : "focus:ring-orange-800"
+                      }`}
+                      aria-describedby={
+                        errors.fiberIntake ? "fiberIntake-error" : undefined
+                      }
+                      disabled={isSubmitting}
+                    >
+                      <option value="">Select Fiber Intake</option>
+                      <option value="high">
+                        High (lots of fruits, veggies, whole grains)
+                      </option>
+                      <option value="moderate">
+                        Moderate (some fiber-rich foods)
+                      </option>
+                      <option value="low">Low (mostly processed foods)</option>
+                      <option value="unsure">Unsure</option>
+                    </select>
+                    {errors.fiberIntake && (
+                      <p
+                        id="fiberIntake-error"
+                        className="text-red-500 text-xs mt-1"
+                      >
+                        {errors.fiberIntake}
+                      </p>
+                    )}
+                  </div>
+                  <div className="mb-4">
+                    <motion.label
+                      variants={labelVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                      htmlFor="fermentedFoods"
+                    >
+                      <FaUtensils className="mr-2 text-orange-800" />
+                      Fermented Foods Consumption
+                    </motion.label>
+                    <select
+                      id="fermentedFoods"
+                      value={formData.fermentedFoods}
+                      onChange={handleChange}
+                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
+                        errors.fermentedFoods
+                          ? "border-red-500 focus:ring-red-500"
+                          : "focus:ring-orange-800"
+                      }`}
+                      aria-describedby={
+                        errors.fermentedFoods
+                          ? "fermentedFoods-error"
+                          : undefined
+                      }
+                      disabled={isSubmitting}
+                    >
+                      <option value="">Select Frequency</option>
+                      <option value="daily">Daily</option>
+                      <option value="weekly">Weekly</option>
+                      <option value="monthly">Monthly</option>
+                      <option value="rarely">Rarely</option>
+                      <option value="never">Never</option>
+                    </select>
+                    {errors.fermentedFoods && (
+                      <p
+                        id="fermentedFoods-error"
+                        className="text-red-500 text-xs mt-1"
+                      >
+                        {errors.fermentedFoods}
+                      </p>
+                    )}
+                  </div>
+                  <div className="mb-4">
+                    <motion.label
+                      variants={labelVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                      htmlFor="sugarProcessedFoods"
+                    >
+                      <FaUtensils className="mr-2 text-orange-800" />
+                      Sugary/Processed Foods Consumption
+                    </motion.label>
+                    <select
+                      id="sugarProcessedFoods"
+                      value={formData.sugarProcessedFoods}
+                      onChange={handleChange}
+                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
+                        errors.sugarProcessedFoods
+                          ? "border-red-500 focus:ring-red-500"
+                          : "focus:ring-orange-800"
+                      }`}
+                      aria-describedby={
+                        errors.sugarProcessedFoods
+                          ? "sugarProcessedFoods-error"
+                          : undefined
+                      }
+                      disabled={isSubmitting}
+                    >
+                      <option value="">Select Frequency</option>
+                      <option value="daily">Daily</option>
+                      <option value="weekly">Weekly</option>
+                      <option value="monthly">Monthly</option>
+                      <option value="rarely">Rarely</option>
+                      <option value="never">Never</option>
+                    </select>
+                    {errors.sugarProcessedFoods && (
+                      <p
+                        id="sugarProcessedFoods-error"
+                        className="text-red-500 text-xs mt-1"
+                      >
+                        {errors.sugarProcessedFoods}
+                      </p>
+                    )}
+                  </div>
+                  <div className="mb-4">
+                    <motion.label
+                      variants={labelVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                      htmlFor="hydration"
+                    >
+                      <FaTint className="mr-2 text-orange-800" />
+                      Daily Water Intake (liters)
+                    </motion.label>
+                    <input
+                      id="hydration"
+                      type="number"
+                      step="0.1"
+                      value={formData.hydration}
+                      onChange={handleChange}
+                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
+                        errors.hydration
+                          ? "border-red-500 focus:ring-red-500"
+                          : "focus:ring-orange-800"
+                      }`}
+                      placeholder="e.g., 2.5"
+                      aria-describedby={
+                        errors.hydration ? "hydration-error" : undefined
+                      }
+                      disabled={isSubmitting}
+                    />
+                    {errors.hydration && (
+                      <p
+                        id="hydration-error"
+                        className="text-red-500 text-xs mt-1"
+                      >
+                        {errors.hydration}
+                      </p>
+                    )}
+                  </div>
                   <div className="mb-4">
                     <motion.label
                       variants={labelVariants}
@@ -1081,7 +1217,7 @@ const DietPlanForm = ({ formType }) => {
                       htmlFor="mealFrequency"
                     >
                       <FaUtensils className="mr-2 text-orange-800" />
-                      Meal Frequency Preference
+                      Meal Frequency
                     </motion.label>
                     <select
                       id="mealFrequency"
@@ -1098,9 +1234,13 @@ const DietPlanForm = ({ formType }) => {
                       disabled={isSubmitting}
                     >
                       <option value="">Select Meal Frequency</option>
-                      <option value="3-meals">3 Meals</option>
-                      <option value="5-meals">5 Small Meals</option>
-                      <option value="intermittent">Intermittent Fasting</option>
+                      <option value="1-2 meals">1-2 Meals</option>
+                      <option value="3 meals">3 Meals</option>
+                      <option value="4-5 meals">4-5 Meals</option>
+                      <option value="intermittent fasting">
+                        Intermittent Fasting
+                      </option>
+                      <option value="other">Other</option>
                     </select>
                     {errors.mealFrequency && (
                       <p
@@ -1117,17 +1257,38 @@ const DietPlanForm = ({ formType }) => {
                       initial="hidden"
                       animate="visible"
                       className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
-                      htmlFor="notes"
+                      htmlFor="foodPreferences"
                     >
                       <FaUtensils className="mr-2 text-orange-800" />
-                      Goals or Additional Notes (Optional)
+                      Food Preferences (Optional)
                     </motion.label>
                     <textarea
-                      id="notes"
-                      value={formData.notes}
+                      id="foodPreferences"
+                      value={formData.foodPreferences}
                       onChange={handleChange}
                       className="w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-orange-800"
-                      placeholder="e.g., Improve energy levels"
+                      placeholder="e.g., Love fermented foods, dislike spicy foods"
+                      rows="3"
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <motion.label
+                      variants={labelVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                      htmlFor="dietaryRestrictions"
+                    >
+                      <FaBan className="mr-2 text-orange-800" />
+                      Dietary Restrictions (Optional)
+                    </motion.label>
+                    <textarea
+                      id="dietaryRestrictions"
+                      value={formData.dietaryRestrictions}
+                      onChange={handleChange}
+                      className="w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-orange-800"
+                      placeholder="e.g., No Dairy, None"
                       rows="3"
                       disabled={isSubmitting}
                     />
@@ -1135,7 +1296,361 @@ const DietPlanForm = ({ formType }) => {
                 </div>
               </motion.div>
             )}
-
+            {step === 5 && (
+              <motion.div
+                key="step5"
+                variants={stepVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                {/* Step 5: Lifestyle and Activity */}
+                <div className="grid grid-cols-1 gap-4">
+                  <div className="mb-4">
+                    <motion.label
+                      variants={labelVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                      htmlFor="activityLevel"
+                    >
+                      <FaDumbbell className="mr-2 text-orange-800" />
+                      Activity Level
+                    </motion.label>
+                    <select
+                      id="activityLevel"
+                      value={formData.activityLevel}
+                      onChange={handleChange}
+                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
+                        errors.activityLevel
+                          ? "border-red-500 focus:ring-red-500"
+                          : "focus:ring-orange-800"
+                      }`}
+                      aria-describedby={
+                        errors.activityLevel ? "activityLevel-error" : undefined
+                      }
+                      disabled={isSubmitting}
+                    >
+                      <option value="">Select Activity Level</option>
+                      <option value="sedentary">
+                        Sedentary (little to no exercise)
+                      </option>
+                      <option value="light">
+                        Light (occasional walking/light activity)
+                      </option>
+                      <option value="moderate">
+                        Moderate (regular exercise 3-5 times/week)
+                      </option>
+                      <option value="active">
+                        Active (daily exercise/intense workouts)
+                      </option>
+                    </select>
+                    {errors.activityLevel && (
+                      <p
+                        id="activityLevel-error"
+                        className="text-red-500 text-xs mt-1"
+                      >
+                        {errors.activityLevel}
+                      </p>
+                    )}
+                  </div>
+                  <div className="mb-4">
+                    <motion.label
+                      variants={labelVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                      htmlFor="stressLevel"
+                    >
+                      <FaDumbbell className="mr-2 text-orange-800" />
+                      Stress Level
+                    </motion.label>
+                    <select
+                      id="stressLevel"
+                      value={formData.stressLevel}
+                      onChange={handleChange}
+                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
+                        errors.stressLevel
+                          ? "border-red-500 focus:ring-red-500"
+                          : "focus:ring-orange-800"
+                      }`}
+                      aria-describedby={
+                        errors.stressLevel ? "stressLevel-error" : undefined
+                      }
+                      disabled={isSubmitting}
+                    >
+                      <option value="">Select Stress Level</option>
+                      <option value="low">Low</option>
+                      <option value="moderate">Moderate</option>
+                      <option value="high">High</option>
+                      <option value="very high">Very High</option>
+                    </select>
+                    {errors.stressLevel && (
+                      <p
+                        id="stressLevel-error"
+                        className="text-red-500 text-xs mt-1"
+                      >
+                        {errors.stressLevel}
+                      </p>
+                    )}
+                  </div>
+                  <div className="mb-4">
+                    <motion.label
+                      variants={labelVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                      htmlFor="sleepQuality"
+                    >
+                      <FaDumbbell className="mr-2 text-orange-800" />
+                      Sleep Quality
+                    </motion.label>
+                    <select
+                      id="sleepQuality"
+                      value={formData.sleepQuality}
+                      onChange={handleChange}
+                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
+                        errors.sleepQuality
+                          ? "border-red-500 focus:ring-red-500"
+                          : "focus:ring-orange-800"
+                      }`}
+                      aria-describedby={
+                        errors.sleepQuality ? "sleepQuality-error" : undefined
+                      }
+                      disabled={isSubmitting}
+                    >
+                      <option value="">Select Sleep Quality</option>
+                      <option value="poor">Poor (frequent disturbances)</option>
+                      <option value="fair">Fair (occasional issues)</option>
+                      <option value="good">Good (mostly restful)</option>
+                      <option value="excellent">
+                        Excellent (consistently restful)
+                      </option>
+                    </select>
+                    {errors.sleepQuality && (
+                      <p
+                        id="sleepQuality-error"
+                        className="text-red-500 text-xs mt-1"
+                      >
+                        {errors.sleepQuality}
+                      </p>
+                    )}
+                  </div>
+                  <div className="mb-4">
+                    <motion.label
+                      variants={labelVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                      htmlFor="dailySchedule"
+                    >
+                      <FaClock className="mr-2 text-orange-800" />
+                      Typical Daily Schedule
+                    </motion.label>
+                    <textarea
+                      id="dailySchedule"
+                      value={formData.dailySchedule}
+                      onChange={handleChange}
+                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
+                        errors.dailySchedule
+                          ? "border-red-500 focus:ring-red-500"
+                          : "focus:ring-orange-800"
+                      }`}
+                      placeholder="e.g., Breakfast at 7 AM, Lunch at 1 PM..."
+                      rows="3"
+                      aria-describedby={
+                        errors.dailySchedule ? "dailySchedule-error" : undefined
+                      }
+                      disabled={isSubmitting}
+                    />
+                    {errors.dailySchedule && (
+                      <p
+                        id="dailySchedule-error"
+                        className="text-red-500 text-xs mt-1"
+                      >
+                        {errors.dailySchedule}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+            {step === 6 && (
+              <motion.div
+                key="step6"
+                variants={stepVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                {/* Step 6: Gut Health Goals and Preferences */}
+                <div className="grid grid-cols-1 gap-4">
+                  <div className="mb-4">
+                    <motion.label
+                      variants={labelVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                      htmlFor="gutHealthGoal"
+                    >
+                      <FaBullseye className="mr-2 text-orange-800" />
+                      Primary Gut Health Goal
+                    </motion.label>
+                    <select
+                      id="gutHealthGoal"
+                      value={formData.gutHealthGoal}
+                      onChange={handleChange}
+                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
+                        errors.gutHealthGoal
+                          ? "border-red-500 focus:ring-red-500"
+                          : "focus:ring-orange-800"
+                      }`}
+                      aria-describedby={
+                        errors.gutHealthGoal ? "gutHealthGoal-error" : undefined
+                      }
+                      disabled={isSubmitting}
+                    >
+                      <option value="">Select Goal</option>
+                      <option value="Reduce Bloating/Gas">
+                        Reduce Bloating/Gas
+                      </option>
+                      <option value="Improve Bowel Regularity">
+                        Improve Bowel Regularity
+                      </option>
+                      <option value="Manage IBS/IBD Symptoms">
+                        Manage IBS/IBD Symptoms
+                      </option>
+                      <option value="Enhance Overall Gut Health">
+                        Enhance Overall Gut Health
+                      </option>
+                      <option value="Other">Other</option>
+                    </select>
+                    {errors.gutHealthGoal && (
+                      <p
+                        id="gutHealthGoal-error"
+                        className="text-red-500 text-xs mt-1"
+                      >
+                        {errors.gutHealthGoal}
+                      </p>
+                    )}
+                  </div>
+                  <div className="mb-4">
+                    <motion.label
+                      variants={labelVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                      htmlFor="cookingAbility"
+                    >
+                      <FaUtensils className="mr-2 text-orange-800" />
+                      Cooking Ability
+                    </motion.label>
+                    <select
+                      id="cookingAbility"
+                      value={formData.cookingAbility}
+                      onChange={handleChange}
+                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
+                        errors.cookingAbility
+                          ? "border-red-500 focus:ring-red-500"
+                          : "focus:ring-orange-800"
+                      }`}
+                      aria-describedby={
+                        errors.cookingAbility
+                          ? "cookingAbility-error"
+                          : undefined
+                      }
+                      disabled={isSubmitting}
+                    >
+                      <option value="">Select Cooking Ability</option>
+                      <option value="beginner">
+                        Beginner (minimal skills)
+                      </option>
+                      <option value="intermediate">
+                        Intermediate (can follow recipes)
+                      </option>
+                      <option value="advanced">
+                        Advanced (confident in the kitchen)
+                      </option>
+                      <option value="quick">Quick (prefer fast meals)</option>
+                    </select>
+                    {errors.cookingAbility && (
+                      <p
+                        id="cookingAbility-error"
+                        className="text-red-500 text-xs mt-1"
+                      >
+                        {errors.cookingAbility}
+                      </p>
+                    )}
+                  </div>
+                  <div className="mb-4">
+                    <motion.label
+                      variants={labelVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                      htmlFor="budget"
+                    >
+                      <FaUtensils className="mr-2 text-orange-800" />
+                      Budget for Food and Supplements
+                    </motion.label>
+                    <select
+                      id="budget"
+                      value={formData.budget}
+                      onChange={handleChange}
+                      className={`w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 ${
+                        errors.budget
+                          ? "border-red-500 focus:ring-red-500"
+                          : "focus:ring-orange-800"
+                      }`}
+                      aria-describedby={
+                        errors.budget ? "budget-error" : undefined
+                      }
+                      disabled={isSubmitting}
+                    >
+                      <option value="">Select Budget</option>
+                      <option value="low">
+                        Low (prefer affordable options)
+                      </option>
+                      <option value="moderate">
+                        Moderate (willing to spend on quality)
+                      </option>
+                      <option value="high">
+                        High (open to premium options)
+                      </option>
+                    </select>
+                    {errors.budget && (
+                      <p
+                        id="budget-error"
+                        className="text-red-500 text-xs mt-1"
+                      >
+                        {errors.budget}
+                      </p>
+                    )}
+                  </div>
+                  <div className="mb-4">
+                    <motion.label
+                      variants={labelVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="text-gray-700 font-bold mb-2 text-sm sm:text-base flex items-center"
+                      htmlFor="notes"
+                    >
+                      <FaNotesMedical className="mr-2 text-orange-800" />
+                      Additional Notes (Optional)
+                    </motion.label>
+                    <textarea
+                      id="notes"
+                      value={formData.notes}
+                      onChange={handleChange}
+                      className="w-full p-2 border rounded text-sm sm:text-base focus:outline-none focus:ring-2 transition-all duration-300 focus:ring-orange-800"
+                      placeholder="e.g., Any specific concerns or preferences"
+                      rows="3"
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            )}
             {step === 7 && (
               <motion.div
                 key="step7"
@@ -1166,29 +1681,23 @@ const DietPlanForm = ({ formType }) => {
                       <p>
                         Goal Weight: {formData.goalWeight || "Not specified"} kg
                       </p>
+                      <p>
+                        Rapid Weight Gain/Lose: {formData.rapidWeightChange}
+                      </p>
+                      <p>
+                        Rapid Weight Gain/Lose Details:{" "}
+                        {formData.rapidWeightChangeDetails || "Not specified"}
+                      </p>
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-gray-700">
-                        Goals and Lifestyle
+                        Gut Health and Medical History
                       </h3>
-                      <p>Dietary Goal: {formData.dietaryGoal}</p>
-                      <p>Activity Level: {formData.activityLevel}</p>
-                      <p>Water Intake: {formData.waterIntake} liters</p>
-                      <p>Schedule: {formData.schedule}</p>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-700">
-                        Food Preferences
-                      </h3>
-                      <p>Preferences: {formData.foodPrefs}</p>
-                      <p>Restrictions: {formData.dietaryRestrictions}</p>
-                      <p>Cooking Ability: {formData.cookingAbility}</p>
-                      <p>Budget: {formData.budget || "Not specified"}</p>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-700">
-                        Health
-                      </h3>
+                      <p>
+                        Digestive Symptoms:{" "}
+                        {formData.digestiveSymptoms.join(", ") || "None"}
+                      </p>
+                      <p>Symptom Frequency: {formData.symptomFrequency}</p>
                       <p>Medical Conditions: {formData.medicalConditions}</p>
                       <p>
                         Medications: {formData.medications || "Not specified"}
@@ -1196,12 +1705,53 @@ const DietPlanForm = ({ formType }) => {
                       <p>
                         Supplements: {formData.supplements || "Not specified"}
                       </p>
+                      <p>
+                        Allergies/Intolerances:{" "}
+                        {formData.allergies || "Not specified"}
+                      </p>
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-gray-700">
-                        Meal Preferences
+                        Dietary Habits
                       </h3>
+                      <p>Dietary Preferences: {formData.dietaryPreferences}</p>
+                      <p>Fiber Intake: {formData.fiberIntake}</p>
+                      <p>Fermented Foods: {formData.fermentedFoods}</p>
+                      <p>
+                        Sugar/Processed Foods: {formData.sugarProcessedFoods}
+                      </p>
+                      <p>Hydration: {formData.hydration} liters</p>
                       <p>Meal Frequency: {formData.mealFrequency}</p>
+                      <p>
+                        Food Preferences:{" "}
+                        {formData.foodPreferences || "Not specified"}
+                      </p>
+                      <p>
+                        Dietary Restrictions:{" "}
+                        {formData.dietaryRestrictions || "Not specified"}
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-700">
+                        Lifestyle and Activity
+                      </h3>
+                      <p>Activity Level: {formData.activityLevel}</p>
+                      <p>Stress Level: {formData.stressLevel}</p>
+                      <p>Sleep Quality: {formData.sleepQuality}</p>
+                      <p>Daily Schedule: {formData.dailySchedule}</p>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-700">
+                        Gut Health Goals and Preferences
+                      </h3>
+                      <p>Gut Health Goal: {formData.gutHealthGoal}</p>
+                      <p>Cooking Ability: {formData.cookingAbility}</p>
+                      <p>Budget: {formData.budget}</p>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-700">
+                        Additional Notes
+                      </h3>
                       <p>Notes: {formData.notes || "Not specified"}</p>
                     </div>
                   </div>
@@ -1354,13 +1904,4 @@ const DietPlanForm = ({ formType }) => {
   );
 };
 
-DietPlanForm.propTypes = {
-  formType: PropTypes.oneOf([
-    "diet-plan",
-    "gut-health",
-    "mental-health",
-    "metabolic-health",
-  ]).isRequired,
-};
-
-export default DietPlanForm;
+export default GutHealthForm;
