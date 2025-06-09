@@ -5,6 +5,8 @@ import {
   FaXTwitter,
   FaInstagram,
   FaLinkedin,
+  FaThreads,
+  FaYoutube,
 } from "react-icons/fa6"; // You can install react-icons for easy social media icons
 
 const Footer = () => {
@@ -21,12 +23,28 @@ const Footer = () => {
           {/* Social Media Icons */}
           <div className="flex gap-6">
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/jogire.me"
               className="text-white hover:text-blue-600 transition duration-300 ease-in-out transform hover:scale-110"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FaFacebook size={30} />
+            </a>
+            <a
+              href="https://www.threads.net/@jogire.we"
+              className="text-white hover:text-gray-500 transition duration-300 ease-in-out transform hover:scale-110"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaThreads size={30} />
+            </a>
+            <a
+              href="https://youtube.com"
+              className="text-white hover:text-gray-500 transition duration-300 ease-in-out transform hover:scale-110"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaYoutube size={30} />
             </a>
             <a
               href="https://x.com"
@@ -37,7 +55,7 @@ const Footer = () => {
               <FaXTwitter size={30} />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/jogire.we/"
               className="text-white hover:text-pink-500 transition duration-300 ease-in-out transform hover:scale-110"
               target="_blank"
               rel="noopener noreferrer"
