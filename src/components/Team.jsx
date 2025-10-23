@@ -620,7 +620,7 @@ Let’s move together toward a more balanced, mindful, and vibrant life with Dha
       detailedDescription: `
 # Meet the Counselling Psychologist – Dr. S. Divya Prabha
 
-***“Small steps every day.”*** — This simple yet profound philosophy defines Dr. Divya Prabha’s approach to life and mental health. As the Co-Founder of Jogire and Founder of Steps Foundations, Dr. Divya brings over sixteen years of dedicated experience in counselling psychology, school counselling, and community mental health to the mission of holistic well-being.
+***“Small steps every day.”*** — This simple yet profound philosophy defines Dr. Divya Prabha’s approach to life and mental health. As the Founder of Steps Foundations, Dr. Divya brings over sixteen years of dedicated experience in counselling psychology, school counselling, and community mental health to the mission of holistic well-being.
 
 ## Dr. Divya’s Journey
 
@@ -677,7 +677,7 @@ Your journey toward mindful emotional balance starts here.
     },
     {
       name: "Shashiranjan Giri",
-      role: "Astro Yogi",
+      role: "Yoga Teacher & Astrologer",
       description:
         "Shashiranjan blends the wisdom of astrology with the discipline of yoga to guide individuals toward holistic balance and self-awareness.",
       image:
