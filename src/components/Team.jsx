@@ -514,7 +514,7 @@ const Team = () => {
       name: "Koushal Puri",
       role: "Founder",
       description:
-        "Anshul, an established holistic yoga and meditation teacher. Anshul's teachings seamlessly integrate yoga philosophy from the physical to the profound.",
+        "Koushal, an established holistic yoga and meditation teacher. Koushal's teachings seamlessly integrate yoga philosophy from the physical to the profound.",
       image:
         "https://jogire.s3.ap-south-1.amazonaws.com/static/aboutus/team/koushal.webp",
       detailedDescription: `
@@ -611,30 +611,136 @@ Let’s move together toward a more balanced, mindful, and vibrant life with Dha
       `,
     },
     {
-      name: "Rudradeep",
-      role: "Ayurveda Specialist",
+      name: "Dr. S. Divya Prabha, M.Sc., Ph.D.",
+      role: "Counselling Psychologist",
       description:
-        "Rudra specializes in Ayurveda and natural healing practices, offering personalized wellness solutions.",
+        "Dr. Divya is a counselling psychologist with 16+ years of experience empowering individuals and families through holistic care.",
       image:
-        "https://jogire.s3.ap-south-1.amazonaws.com/static/aboutus/team/rudradeep.webp",
+        "https://jogire.s3.ap-south-1.amazonaws.com/static/aboutus/team/divya.webp",
       detailedDescription: `
-# Rudradeep - Ayurveda Specialist
+# Meet the Counselling Psychologist – Dr. S. Divya Prabha
 
-Rudradeep is an Ayurveda specialist dedicated to natural healing. With a deep understanding of ancient practices, he offers solutions tailored to individual needs.
+***“Small steps every day.”*** — This simple yet profound philosophy defines Dr. Divya Prabha’s approach to life and mental health. As the Co-Founder of Jogire and Founder of Steps Foundations, Dr. Divya brings over sixteen years of dedicated experience in counselling psychology, school counselling, and community mental health to the mission of holistic well-being.
 
-## Expertise
-- **Ayurvedic Diagnosis**: Assessing doshas for personalized treatments.
-- **Herbal Remedies**: Using natural herbs for healing and balance.
-- **Detox Programs**: Designing cleansing routines for overall health.
+## Dr. Divya’s Journey
+
+A Counselling Psychologist and ACA-certified Professional Supervisor, Dr. Divya’s work bridges accessibility, empathy, and ethics in mental health. Through Steps Foundations, she has built platforms for affordable counselling, pro bono services, and student internships that foster professional competence and social responsibility.
+
+Currently, she serves as the **Chief Psychological Officer at Dhruti Trust**, where she leads mental health initiatives, and as a **Consulting Psychologist** for Presentation Convent Schools, continuing her life-long passion for nurturing emotional well-being in children and adolescents.
+
+## Credentials That Matter
+
+Dr. Divya’s academic and professional journey reflects her deep commitment to evidence-based and ethical practice:
+
+- **Ph.D. in Psychology** — Bharathiar University, Coimbatore  
+  *Research focus:* Prevention of Internet Addiction among Adolescents  
+- **M.Sc. in Psychology** — University of Madras  
+- **Certified CBT Practitioner**  
+- **ACA Certified Professional Supervisor**  
+- **Yoga Volunteer**, Ministry of AYUSH, Government of India  
+
+Her training integrates psychological science with mindfulness and holistic approaches to create grounded, sustainable healing experiences.
+
+## Experience You Can Trust
+
+With more than 16 years in counselling and 13 years in school settings, Dr. Divya has supported thousands of children, parents, couples, and educators. Her expertise spans:
+
+- Child & Adolescent Counselling  
+- Marital & Family Counselling  
+- Emotional Regulation & Anger Management  
+- Trauma and Grief Support  
+- Stress, Anxiety & Depression Care  
+- Supervision & Ethical Practice for Counsellors  
+
+She has led numerous workshops and training programs on **POCSO awareness**, **resilience building**, **suicide prevention**, and **ethical counselling**, empowering professionals and communities alike.
+
+## Leadership and Recognition
+
+Dr. Divya served as **President of the Chennai Counsellors Foundation (CCF)** for four consecutive years and continues as an Advisory Committee Member. She also held executive roles in the **Indian Academy of Professional Supervisors (IAPS)** and remains affiliated with respected organizations such as **APA**, **IAAP**, and **InSPA**.
+
+In recognition of her contribution to mental health, she received the **“Great Indian Counselling Psychologist of the Year 2024”** award from *Wings of Fire*.
+
+## The Heart Behind Her Work
+
+For Dr. Divya, counselling is more than a profession — it’s a calling rooted in compassion, ethics, and community care. She is an advocate for **self-care among mental health professionals**, encouraging practitioners to nurture their own emotional well-being to better serve others.
+
+Outside her professional life, she finds joy in nature, photography, cycling, doodling, and tending her garden — grounding practices that mirror the balance she teaches.
+
+## The Spirit of Jogire
+
+At Jogire, Dr. Divya Prabha brings the mental-emotional dimension of holistic health to life. Her vision complements the physical and nutritional wellness foundation laid by Koushal Puri, creating a truly integrated approach to conscious living — one that heals the mind, nourishes the body, and uplifts the spirit.
+
+## Welcome to Jogire.
+
+Your journey toward mindful emotional balance starts here.
+  `,
+    },
+    {
+      name: "Shashiranjan Giri",
+      role: "Astro Yogi",
+      description:
+        "Shashiranjan blends the wisdom of astrology with the discipline of yoga to guide individuals toward holistic balance and self-awareness.",
+      image:
+        "https://jogire.s3.ap-south-1.amazonaws.com/static/aboutus/team/sashi.webp",
+      detailedDescription: `
+# Meet Shashiranjan Giri
+
+Rooted in the timeless sciences of **Jyotish** and **Yoga**, Shashiranjan Giri brings over half a decade of experience helping people align their inner and outer worlds. His work bridges cosmic insight with mindful living, empowering individuals to find clarity, purpose, and peace.
+
+## Education & Training
+
+- Shastri in Jyotish  
+- M.A. in Yogic Science  
+- Diploma in Jyotish  
+
+This unique combination of astrology and yogic philosophy enables Shashiranjan to offer a deeply integrative perspective on life’s challenges and transformations.
+
+## Professional Experience
+
+- **Yoga Teacher** at *Yokalp*  
+- **Astrologer** at *Astrotalk*  
+- **5+ years of experience** in Astrology and Yogic guidance  
+
+Shashiranjan’s consultations and teachings emphasize self-awareness, emotional harmony, and spiritual alignment—helping people navigate modern life with ancient wisdom.
+
+## Guiding Philosophy
+
+For Shashiranjan, wellness is not just physical or astrological—it’s the art of living in rhythm with oneself and the universe. Through his work, he continues to illuminate the connection between cosmic patterns and conscious living.`,
+    },
+    {
+      name: "Dr. Ishant Vijay",
+      role: "Physiotherapist ",
+      description:
+        "Dr. Ishant is a sports and rehabilitation physiotherapist dedicated to restoring movement, strength, and performance through evidence-based care.",
+      image:
+        "https://jogire.s3.ap-south-1.amazonaws.com/static/aboutus/team/ishant.webp",
+      detailedDescription: `
+# Meet Dr. Ishant Vijay (PT)
+
+With a deep passion for sports medicine and rehabilitation, Dr. Ishant Vijay serves as the **Head of Physiotherapy Department** at *Nandini Multi-Speciality Hospital, Kota (Rajasthan)*. His approach blends modern physiotherapy techniques with a commitment to personalized recovery and long-term wellness.
+
+## Education & Credentials
+
+- **Bachelor of Physiotherapy (BPT)**  
+- **Master of Physiotherapy (MPT)** in *Sports & Rehabilitation*  
+
+Dr. Ishant’s academic background is strengthened by specialized certifications and continuous learning in advanced treatment modalities.
+
+## Certifications
+
+- Certified by **FIFA – Football Medicine Course**  
+- Certified in **K-Taping**, **Cupping Therapy**, **SPJM**, and **IALCR**
+
+These credentials reflect his dedication to staying at the forefront of sports injury management and performance enhancement.
+
+## Professional Experience
+
+With **4 years of clinical practice**, Dr. Ishant has worked extensively with athletes, rehabilitation patients, and individuals seeking recovery from musculoskeletal injuries. His work emphasizes functional movement, preventive care, and customized therapy protocols designed to optimize physical potential.
 
 ## Philosophy
-Rudradeep believes that true healing comes from nature. His approach combines traditional Ayurvedic wisdom with modern lifestyle adjustments to promote long-term well-being.
 
-## Achievements
-- Trained under Ayurvedic masters in Kerala.
-- Developed a line of organic herbal products.
-- Speaker at the Global Ayurveda Summit 2024.
-      `,
+For Dr. Ishant, physiotherapy is more than treatment—it’s empowerment. His mission is to help people move better, recover faster, and live stronger through informed, compassionate care.
+  `,
     },
   ];
 

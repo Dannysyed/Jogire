@@ -24,6 +24,7 @@ import DietPlanForm from "./components/DietPlanForm";
 import GutHealthForm from "./components/GutHealthForm";
 import MentalHealthForm from "./components/MentalHealthForm";
 import MetabolicHealthForm from "./components/MetabolicHealthForm";
+// import GutHealthLandingPage from "./components/GutHealthLandingPage";
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
           path="/services/metabolic-health"
           element={<MetabolicHealthForm formType="metabolic-health" />}
         />
+        {/* <Route path="/gut-health" element={<GutHealthLandingPage />} /> */}
       </Routes>
       <Footer />
       <WhatsappContact />
