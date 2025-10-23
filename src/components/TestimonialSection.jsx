@@ -241,7 +241,171 @@
 // };
 
 // export default TestimonialSection;
-import React, { useState, useEffect } from "react";
+
+// import React, { useState, useEffect } from "react";
+// import { FaArrowLeft, FaArrowRight, FaPlay } from "react-icons/fa";
+
+// const TestimonialSection = () => {
+//   const [testimonials, setTestimonials] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
+//   const [currentPage, setCurrentPage] = useState(1);
+//   const [playing, setPlaying] = useState({}); // Track playing state for each video
+
+//   const testimonialsPerPage = window.innerWidth >= 1024 ? 3 : 1; // 3 testimonials on large screens, 1 on small screens
+
+//   // Fetch testimonials from FastAPI backend
+//   useEffect(() => {
+//     const fetchTestimonials = async () => {
+//       try {
+//         const response = await fetch(
+//           "https://jogire-backend.onrender.com/api/v1/testimonials",
+//           {
+//             method: "GET",
+//             headers: { "Content-Type": "application/json" },
+//           }
+//         );
+//         if (!response.ok) throw new Error("Failed to fetch testimonials");
+//         const data = await response.json();
+//         setTestimonials(data);
+//       } catch (err) {
+//         setError(err.message);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+//     fetchTestimonials();
+//   }, []);
+
+//   // Handle custom play button click
+//   const handlePlay = (id) => {
+//     const videoElement = document.getElementById(`video-${id}`);
+//     if (videoElement) {
+//       videoElement.play();
+//       setPlaying((prev) => ({ ...prev, [id]: true }));
+//     }
+//   };
+
+//   // Handle video pause to show play button again
+//   const handlePause = (id) => {
+//     setPlaying((prev) => ({ ...prev, [id]: false }));
+//   };
+
+//   // Pagination Logic
+//   const indexOfLastTestimonial = currentPage * testimonialsPerPage;
+//   const indexOfFirstTestimonial = indexOfLastTestimonial - testimonialsPerPage;
+//   const currentTestimonials = testimonials.slice(
+//     indexOfFirstTestimonial,
+//     indexOfLastTestimonial
+//   );
+
+//   const handleNextPage = () => {
+//     if (currentPage < Math.ceil(testimonials.length / testimonialsPerPage)) {
+//       setCurrentPage(currentPage + 1);
+//     }
+//   };
+
+//   const handlePrevPage = () => {
+//     if (currentPage > 1) {
+//       setCurrentPage(currentPage - 1);
+//     }
+//   };
+
+//   if (loading)
+//     return (
+//       <div className="text-center py-10 text-gray-600">
+//         Loading testimonials...
+//       </div>
+//     );
+//   if (error)
+//     return <div className="text-center py-10 text-red-500">Error: {error}</div>;
+
+//   return (
+//     <section className="py-8 bg-white">
+//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//         <h1 className="text-4xl font-bold text-center text-[#d67952]">
+//           What Our Clients Say
+//         </h1>
+//         <p className="mt-2 text-lg text-gray-600 text-center">
+//           Hear how our clients unlocked their full potential.
+//         </p>
+//         <div className="overflow-hidden">
+//           {/* Adjust the grid based on page */}
+//           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 py-8">
+//             {currentTestimonials.map((testimonial) => (
+//               <div
+//                 key={testimonial.id}
+//                 className="bg-gray-50 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
+//               >
+//                 <div className="relative aspect-video">
+//                   <video
+//                     id={`video-${testimonial.id}`}
+//                     crossOrigin="anonymous"
+//                     controls
+//                     preload="none" // Prevents preloading
+//                     poster={testimonial.thumbnail_url} // Thumbnail for initial load
+//                     className="w-full h-full object-cover"
+//                     src={testimonial.video_url}
+//                     onPause={() => handlePause(testimonial.id)}
+//                   >
+//                     <track
+//                       kind="captions"
+//                       src={testimonial.caption_url}
+//                       srcLang="en"
+//                       label="English"
+//                       default
+//                     />
+//                     Your browser does not support the video tag.
+//                   </video>
+//                   {/* Custom Play Button Overlay */}
+//                   {!playing[testimonial.id] && (
+//                     <button
+//                       onClick={() => handlePlay(testimonial.id)}
+//                       className="lg:flex hidden absolute inset-0 items-center justify-center bg-black bg-opacity-40 hover:bg-opacity-50 transition-all duration-300"
+//                       aria-label="Play video"
+//                     >
+//                       <FaPlay className="text-white text-4xl" />
+//                     </button>
+//                   )}
+//                 </div>
+//                 <div className="p-4">
+//                   <p className="text-gray-600 italic">{testimonial.caption}</p>
+//                   <p className="mt-2 text-sm font-semibold text-gray-800">
+//                     {testimonial.name}
+//                   </p>
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//         {/* Pagination Buttons */}
+//         <div className="flex justify-center mt-8">
+//           <button
+//             onClick={handlePrevPage}
+//             className="flex justify-center items-center p-3 bg-[#d67952] text-white rounded-full disabled:opacity-50"
+//             disabled={currentPage === 1}
+//           >
+//             <FaArrowLeft />
+//           </button>
+//           <button
+//             onClick={handleNextPage}
+//             className="flex justify-center items-center p-3 bg-[#d67952] text-white rounded-full ml-4 disabled:opacity-50"
+//             disabled={
+//               currentPage ===
+//               Math.ceil(testimonials.length / testimonialsPerPage)
+//             }
+//           >
+//             <FaArrowRight />
+//           </button>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default TestimonialSection;
+
+import { useState, useEffect } from "react";
 import { FaArrowLeft, FaArrowRight, FaPlay } from "react-icons/fa";
 
 const TestimonialSection = () => {
@@ -249,11 +413,10 @@ const TestimonialSection = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [playing, setPlaying] = useState({}); // Track playing state for each video
+  const [playing, setPlaying] = useState({});
 
-  const testimonialsPerPage = window.innerWidth >= 1024 ? 3 : 1; // 3 testimonials on large screens, 1 on small screens
+  const testimonialsPerPage = window.innerWidth >= 1024 ? 3 : 1;
 
-  // Fetch testimonials from FastAPI backend
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
@@ -276,7 +439,6 @@ const TestimonialSection = () => {
     fetchTestimonials();
   }, []);
 
-  // Handle custom play button click
   const handlePlay = (id) => {
     const videoElement = document.getElementById(`video-${id}`);
     if (videoElement) {
@@ -285,12 +447,10 @@ const TestimonialSection = () => {
     }
   };
 
-  // Handle video pause to show play button again
   const handlePause = (id) => {
     setPlaying((prev) => ({ ...prev, [id]: false }));
   };
 
-  // Pagination Logic
   const indexOfLastTestimonial = currentPage * testimonialsPerPage;
   const indexOfFirstTestimonial = indexOfLastTestimonial - testimonialsPerPage;
   const currentTestimonials = testimonials.slice(
@@ -328,45 +488,62 @@ const TestimonialSection = () => {
         <p className="mt-2 text-lg text-gray-600 text-center">
           Hear how our clients unlocked their full potential.
         </p>
+
         <div className="overflow-hidden">
-          {/* Adjust the grid based on page */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 py-8">
             {currentTestimonials.map((testimonial) => (
               <div
                 key={testimonial.id}
                 className="bg-gray-50 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
               >
-                <div className="relative aspect-video">
-                  <video
-                    id={`video-${testimonial.id}`}
-                    crossOrigin="anonymous"
-                    controls
-                    preload="none" // Prevents preloading
-                    poster={testimonial.thumbnail_url} // Thumbnail for initial load
-                    className="w-full h-full object-cover"
-                    src={testimonial.video_url}
-                    onPause={() => handlePause(testimonial.id)}
-                  >
-                    <track
-                      kind="captions"
-                      src={testimonial.caption_url}
-                      srcLang="en"
-                      label="English"
-                      default
+                {/* Wrapper for 16:9 aspect ratio */}
+                <div className="relative w-full pt-[56.25%] bg-black overflow-hidden rounded-t-xl">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    {/* Blurred background video */}
+                    <video
+                      className="absolute inset-0 w-full h-full object-cover filter blur-md scale-110 opacity-30 pointer-events-none"
+                      src={testimonial.video_url}
+                      muted
+                      loop
+                      playsInline
+                      autoPlay
                     />
-                    Your browser does not support the video tag.
-                  </video>
-                  {/* Custom Play Button Overlay */}
-                  {!playing[testimonial.id] && (
-                    <button
-                      onClick={() => handlePlay(testimonial.id)}
-                      className="lg:flex hidden absolute inset-0 items-center justify-center bg-black bg-opacity-40 hover:bg-opacity-50 transition-all duration-300"
-                      aria-label="Play video"
+
+                    {/* Main video */}
+                    <video
+                      id={`video-${testimonial.id}`}
+                      crossOrigin="anonymous"
+                      controls
+                      preload="none"
+                      poster={testimonial.thumbnail_url}
+                      className="relative z-10 max-h-full max-w-full object-contain bg-black min-w-[300px]"
+                      src={testimonial.video_url}
+                      onPause={() => handlePause(testimonial.id)}
                     >
-                      <FaPlay className="text-white text-4xl" />
-                    </button>
-                  )}
+                      <track
+                        kind="captions"
+                        src={testimonial.caption_url}
+                        srcLang="en"
+                        label="English"
+                        default
+                      />
+                      Your browser does not support the video tag.
+                    </video>
+
+                    {/* Play button */}
+                    {!playing[testimonial.id] && (
+                      <button
+                        onClick={() => handlePlay(testimonial.id)}
+                        className="lg:flex hidden absolute inset-0 items-center justify-center bg-black bg-opacity-40 hover:bg-opacity-50 transition-all duration-300 z-20"
+                        aria-label="Play video"
+                      >
+                        <FaPlay className="text-white text-4xl" />
+                      </button>
+                    )}
+                  </div>
                 </div>
+
+                {/* Caption area */}
                 <div className="p-4">
                   <p className="text-gray-600 italic">{testimonial.caption}</p>
                   <p className="mt-2 text-sm font-semibold text-gray-800">
@@ -377,7 +554,8 @@ const TestimonialSection = () => {
             ))}
           </div>
         </div>
-        {/* Pagination Buttons */}
+
+        {/* Pagination */}
         <div className="flex justify-center mt-8">
           <button
             onClick={handlePrevPage}
