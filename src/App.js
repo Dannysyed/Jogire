@@ -24,11 +24,13 @@ import DietPlanForm from "./components/DietPlanForm";
 import GutHealthForm from "./components/GutHealthForm";
 import MentalHealthForm from "./components/MentalHealthForm";
 import MetabolicHealthForm from "./components/MetabolicHealthForm";
+import ScrollToTop from "./components/ScrollToTop";
 // import GutHealthLandingPage from "./components/GutHealthLandingPage";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
